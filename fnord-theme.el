@@ -140,17 +140,17 @@ be substituted using `fnord--get-colour'."
    ;; +--- UI ---+
    `(border ,(fnord--face :foreground 4))
    `(buffer-menu-buffer ,(fnord--face :foreground 4 :weight 'bold))
-   `(button ,(fnord--face :background 0 :foreground 8 :box (list :line-width 2 :color fnord-4 :style 'sunken-button)))
+   `(button ,(fnord--face :background 0 :foreground 8 :box (list :line-width 1 :color fnord-8 :style 'sunken-button)))
    `(completions-annotations ,(fnord--face :foreground 9))
    `(completions-common-part ,(fnord--face :foreground 8 :weight 'bold))
    `(completions-first-difference ,(fnord--face :foreground 11))
-   `(custom-button ,(fnord--face :background 0 :foreground 8 :box (list :line-width 2 :color fnord-4 :style 'sunken-button)))
-   `(custom-button-mouse ,(fnord--face :background 4 :foreground 0 :box (list :line-width 2 :color fnord-4 :style 'sunken-button)))
-   `(custom-button-pressed ,(fnord--face :background 6 :foreground 0 :box (list :line-width 2 :color fnord-4 :style 'sunken-button)))
+   `(custom-button ,(fnord--face :background 0 :foreground 8 :box (list :line-width 1 :color fnord-8 :style 'sunken-button)))
+   `(custom-button-mouse ,(fnord--face :background 4 :foreground 0 :box (list :line-width 1 :color fnord-8 :style 'sunken-button)))
+   `(custom-button-pressed ,(fnord--face :background 6 :foreground 0 :box (list :line-width 1 :color fnord-8 :style 'sunken-button)))
    `(custom-button-pressed-unraised ,(fnord--face :background 4 :foreground 0 :box
-                                                  (list :line-width 2 :color fnord-4 :style 'sunken-button)))
+                                                  (list :line-width 1 :color fnord-8 :style 'sunken-button)))
    `(custom-button-unraised ,(fnord--face :background 0 :foreground 8 :box
-                                          (list :line-width 2 :color fnord-4 :style 'sunken-button)))
+                                          (list :line-width 1 :color fnord-8 :style 'sunken-button)))
    `(custom-changed ,(fnord--face :foreground 13))
    `(custom-comment ,(fnord--face :foreground fnord-comment))
    `(custom-comment-tag ,(fnord--face :foreground 7))
