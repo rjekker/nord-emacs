@@ -1,4 +1,4 @@
-;;; nord-theme.el --- An arctic, north-bluish clean and elegant theme
+;;; fnord-theme.el --- Nord, fixed: An arctic, north-bluish clean and elegant theme
 
 ;; Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com> (https://www.arcticicestudio.com)
 ;; Copyright (C) 2016-present Sven Greb <development@svengreb.de> (https://www.svengreb.de)
@@ -7,7 +7,7 @@
 ;; Project: nord-emacs
 ;; Version: 0.5.0
 ;; URL: https://github.com/arcticicestudio/nord-emacs
-;; Author: Arctic Ice Studio <development@arcticicestudio.com>
+;; Author: Reindert-Jan Ekker
 ;; Package-Requires: ((emacs "24"))
 ;; License: MIT
 
@@ -15,26 +15,6 @@
 
 ;; Nord is a 16 colorspace theme build to run in GUI- and terminal
 ;; mode with support for many third-party syntax- and UI packages.
-
-;;; References:
-;; Awesome Emacs
-;;   https://github.com/emacs-tw/awesome-emacs
-;; GNU ELPA
-;;   https://elpa.gnu.org
-;; GNU Emacs
-;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Custom-Themes.html
-;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Creating-Custom-Themes.html
-;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Faces.html
-;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Standard-Faces.html
-;;   https://www.gnu.org/software/emacs/manual/html_node/emacs/Face-Customization.html
-;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Face-Attributes.html
-;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Faces-for-Font-Lock.html
-;;   https://www.gnu.org/software/emacs/manual/html_node/elisp/Display-Feature-Testing.html
-;; marmalade repo
-;;   https://marmalade-repo.org
-;; MELPA
-;;   https://melpa.org
-;;   https://stable.melpa.org
 
 ;;; Code:
 
@@ -284,14 +264,16 @@ any type like integers and floating point numbers."
   (cl-assert (and (>= n 0) (< n 16)))                  
   (when n
     (nth n (if col-256
-                     (list nord-0 nord-1-256 nord-2-256 nord-3-256 nord-4-256 nord-5-256 nord-6-256 nord-7-256 nord-8-256 nord-9-256 nord-10-256 nord-11-256 nord-12-256 nord-13-256 nord-14-256 nord-15-256)
-                   (list nord-0 nord-1 nord-2 nord-3 nord-4 nord-5 nord-6 nord-7 nord-8 nord-9 nord-10 nord-11 nord-12 nord-13 nord-14 nord-15)))))
+               (list nord-0 nord-1-256 nord-2-256 nord-3-256 nord-4-256 nord-5-256 nord-6-256 nord-7-256 nord-8-256 nord-9-256 nord-10-256 nord-11-256 nord-12-256 nord-13-256 nord-14-256 nord-15-256)
+             (list nord-0 nord-1 nord-2 nord-3 nord-4 nord-5 nord-6 nord-7 nord-8 nord-9 nord-10 nord-11 nord-12 nord-13 nord-14 nord-15)))))
 
 
 (defconst nord--class '((class color) (min-colors 257)))
 (defconst nord--class-256 '((class color) (min-colors 89)))
 
+
 (defun nord--subst-colours (face-spec col-256)
+  "If foreground or background in FACE-SPEC are given as ints, replace them using `nord--get-colour'."
   (dolist (prop '(:foreground :background))
     (when-let ((val (plist-get face-spec prop)))
       (when (numberp val)
@@ -833,76 +815,76 @@ be substituted using `nord--get-colour'."
    ;; > Cider
    `(cider-result-overlay-face ((t (:background unspecified)))
 
-   ;; > Org
-   `(org-level-1 ,(nord--face :foreground 7 :weight extra-bold))
-   `(org-level-2 ,(nord--face :foreground 8 :weight 'bold))
-   `(org-level-3 ,(nord--face :foreground 9 :weight semi-bold))
-   `(org-level-4 ,(nord--face :foreground 10 :weight normal))
-   `(org-level-5 ,(nord--face :inherit 'org-level-4))
-   `(org-level-6 ,(nord--face :inherit 'org-level-4))
-   `(org-level-7 ,(nord--face :inherit 'org-level-4))
-   `(org-level-8 ,(nord--face :inherit 'org-level-4))
-   `(org-agenda-structure ,(nord--face :foreground 9))
-   `(org-agenda-date ,(nord--face :foreground 8 :underline nil))
-   `(org-agenda-done ,(nord--face :foreground 14))
-   `(org-agenda-dimmed-todo-face ,(nord--face :background 13))
-   `(org-block ,(nord--face :foreground 4))
-   `(org-block-background ,(nord--face :background 0))
-   `(org-block-begin-line ,(nord--face :foreground 7))
-   `(org-block-end-line ,(nord--face :foreground 7))
-   `(org-checkbox ,(nord--face :foreground 9))
-   `(org-checkbox-statistics-done ,(nord--face :foreground 14))
-   `(org-checkbox-statistics-todo ,(nord--face :foreground 13))
-   `(org-code ,(nord--face :foreground 7))
-   `(org-column ,(nord--face :background 2))
-   `(org-column-title ,(nord--face :inherit 'org-column :weight 'bold :underline t))
-   `(org-date ,(nord--face :foreground 8))
-   `(org-document-info ,(nord--face :foreground 4))
-   `(org-document-info-keyword ,(nord--face :foreground 3 :weight 'bold))
-   `(org-document-title ,(nord--face :foreground 8 :weight 'bold))
-   `(org-done ,(nord--face :foreground 14 :weight 'bold))
-   `(org-ellipsis ,(nord--face :foreground 3))
-   `(org-footnote ,(nord--face :foreground 8))
-   `(org-formula ,(nord--face :foreground 9))
-   `(org-hide ,(nord--face :foreground 0 :background 0))
-   `(org-link ,(nord--face :underline t))
-   `(org-scheduled ,(nord--face :foreground 14))
-   `(org-scheduled-previously ,(nord--face :foreground 13))
-   `(org-scheduled-today ,(nord--face :foreground 8))
-   `(org-special-keyword ,(nord--face :foreground 9))
-   `(org-table ,(nord--face :foreground 9))
-   `(org-todo ,(nord--face :foreground 13 :weight 'bold))
-   `(org-upcoming-deadline ,(nord--face :foreground 12))
-   `(org-warning ,(nord--face :foreground 13 :weight 'bold))
-   `(font-latex-bold-face ,(nord--face :inherit 'bold))
-   `(font-latex-italic-face ,(nord--face :slant 'italic))
-   `(font-latex-string-face ,(nord--face :foreground 14))
-   `(font-latex-match-reference-keywords ,(nord--face :foreground 9))
-   `(font-latex-match-variable-keywords ,(nord--face :foreground 4))
-   `(ido-only-match ,(nord--face :foreground 8))
-   `(org-sexp-date ,(nord--face :foreground 7))
-   `(ido-first-match ,(nord--face :foreground 8 :weight 'bold))
-   `(ido-subdir ,(nord--face :foreground 9))
-   `(org-quote ,(nord--face :inherit 'org-block :slant 'italic))
-   `(org-verse ,(nord--face :inherit 'org-block :slant 'italic))
-   `(org-agenda-date-weekend ,(nord--face :foreground 9))
-   `(org-agenda-date-today ,(nord--face :foreground 8 :weight 'bold))
-   `(org-agenda-done ,(nord--face :foreground 14))
-   `(org-verbatim ,(nord--face :foreground 7))
+                               ;; > Org
+                               `(org-level-1 ,(nord--face :foreground 7 :weight extra-bold))
+                               `(org-level-2 ,(nord--face :foreground 8 :weight 'bold))
+                               `(org-level-3 ,(nord--face :foreground 9 :weight semi-bold))
+                               `(org-level-4 ,(nord--face :foreground 10 :weight normal))
+                               `(org-level-5 ,(nord--face :inherit 'org-level-4))
+                               `(org-level-6 ,(nord--face :inherit 'org-level-4))
+                               `(org-level-7 ,(nord--face :inherit 'org-level-4))
+                               `(org-level-8 ,(nord--face :inherit 'org-level-4))
+                               `(org-agenda-structure ,(nord--face :foreground 9))
+                               `(org-agenda-date ,(nord--face :foreground 8 :underline nil))
+                               `(org-agenda-done ,(nord--face :foreground 14))
+                               `(org-agenda-dimmed-todo-face ,(nord--face :background 13))
+                               `(org-block ,(nord--face :foreground 4))
+                               `(org-block-background ,(nord--face :background 0))
+                               `(org-block-begin-line ,(nord--face :foreground 7))
+                               `(org-block-end-line ,(nord--face :foreground 7))
+                               `(org-checkbox ,(nord--face :foreground 9))
+                               `(org-checkbox-statistics-done ,(nord--face :foreground 14))
+                               `(org-checkbox-statistics-todo ,(nord--face :foreground 13))
+                               `(org-code ,(nord--face :foreground 7))
+                               `(org-column ,(nord--face :background 2))
+                               `(org-column-title ,(nord--face :inherit 'org-column :weight 'bold :underline t))
+                               `(org-date ,(nord--face :foreground 8))
+                               `(org-document-info ,(nord--face :foreground 4))
+                               `(org-document-info-keyword ,(nord--face :foreground 3 :weight 'bold))
+                               `(org-document-title ,(nord--face :foreground 8 :weight 'bold))
+                               `(org-done ,(nord--face :foreground 14 :weight 'bold))
+                               `(org-ellipsis ,(nord--face :foreground 3))
+                               `(org-footnote ,(nord--face :foreground 8))
+                               `(org-formula ,(nord--face :foreground 9))
+                               `(org-hide ,(nord--face :foreground 0 :background 0))
+                               `(org-link ,(nord--face :underline t))
+                               `(org-scheduled ,(nord--face :foreground 14))
+                               `(org-scheduled-previously ,(nord--face :foreground 13))
+                               `(org-scheduled-today ,(nord--face :foreground 8))
+                               `(org-special-keyword ,(nord--face :foreground 9))
+                               `(org-table ,(nord--face :foreground 9))
+                               `(org-todo ,(nord--face :foreground 13 :weight 'bold))
+                               `(org-upcoming-deadline ,(nord--face :foreground 12))
+                               `(org-warning ,(nord--face :foreground 13 :weight 'bold))
+                               `(font-latex-bold-face ,(nord--face :inherit 'bold))
+                               `(font-latex-italic-face ,(nord--face :slant 'italic))
+                               `(font-latex-string-face ,(nord--face :foreground 14))
+                               `(font-latex-match-reference-keywords ,(nord--face :foreground 9))
+                               `(font-latex-match-variable-keywords ,(nord--face :foreground 4))
+                               `(ido-only-match ,(nord--face :foreground 8))
+                               `(org-sexp-date ,(nord--face :foreground 7))
+                               `(ido-first-match ,(nord--face :foreground 8 :weight 'bold))
+                               `(ido-subdir ,(nord--face :foreground 9))
+                               `(org-quote ,(nord--face :inherit 'org-block :slant 'italic))
+                               `(org-verse ,(nord--face :inherit 'org-block :slant 'italic))
+                               `(org-agenda-date-weekend ,(nord--face :foreground 9))
+                               `(org-agenda-date-today ,(nord--face :foreground 8 :weight 'bold))
+                               `(org-agenda-done ,(nord--face :foreground 14))
+                               `(org-verbatim ,(nord--face :foreground 7))
 
-   ;; > ivy-mode
-   `(ivy-current-match ,(nord--face :inherit 'region))
-   `(ivy-minibuffer-match-face-1 ,(nord--face :inherit 'default))
-   `(ivy-minibuffer-match-face-2 ,(nord--face :background 7 :foreground 0))
-   `(ivy-minibuffer-match-face-3 ,(nord--face :background 8 :foreground 0))
-   `(ivy-minibuffer-match-face-4 ,(nord--face :background 9 :foreground 0))
-   `(ivy-remote ,(nord--face :foreground 14))
-   `(ivy-posframe ,(nord--face :background 1))
-   `(ivy-posframe-border ,(nord--face :background 1))
-   `(ivy-remote ,(nord--face :foreground 14))
+                               ;; > ivy-mode
+                               `(ivy-current-match ,(nord--face :inherit 'region))
+                               `(ivy-minibuffer-match-face-1 ,(nord--face :inherit 'default))
+                               `(ivy-minibuffer-match-face-2 ,(nord--face :background 7 :foreground 0))
+                               `(ivy-minibuffer-match-face-3 ,(nord--face :background 8 :foreground 0))
+                               `(ivy-minibuffer-match-face-4 ,(nord--face :background 9 :foreground 0))
+                               `(ivy-remote ,(nord--face :foreground 14))
+                               `(ivy-posframe ,(nord--face :background 1))
+                               `(ivy-posframe-border ,(nord--face :background 1))
+                               `(ivy-remote ,(nord--face :foreground 14))
 
-   ;; > perspective
-   `(persp-selected-face ,(nord--face :foreground 8 :weight 'bold)))))
+                               ;; > perspective
+                               `(persp-selected-face ,(nord--face :foreground 8 :weight 'bold)))))
 
 
 ;;;###autoload
@@ -910,11 +892,11 @@ be substituted using `nord--get-colour'."
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'nord)
+(provide-theme 'fnord)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; indent-tabs-mode: nil
 ;; End:
 
-;;; nord-theme.el ends here
+;;; fnord-theme.el ends here
