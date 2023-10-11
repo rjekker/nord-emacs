@@ -1,12 +1,15 @@
 ;;; fnord-theme.el --- Nord, fixed: An arctic, north-bluish clean and elegant theme
 
-;; Copyright (C) 2016-present Arctic Ice Studio <development@arcticicestudio.com> (https://www.arcticicestudio.com)
-;; Copyright (C) 2016-present Sven Greb <development@svengreb.de> (https://www.svengreb.de)
+;; Copyright for portions of project fnord-theme are held by: Sven Greb
+;; <development@svengreb.de> (https://www.svengreb.de) 2016-2023, as part
+;; of project nordtheme/emacs (https://github.com/nordtheme/emacs). All
+;; other copyright for project fnord-theme are held by Reindert-Jan Ekker
+;; <info@rjekker.nl>, 2023-present.
 
 ;; Title: Nord Theme
 ;; Project: nord-emacs
 ;; Version: 0.5.0
-;; URL: https://github.com/arcticicestudio/nord-emacs
+;; URL: https://github.com/rjekker/fnord-theme
 ;; Author: Reindert-Jan Ekker
 ;; Package-Requires: ((emacs "24"))
 ;; License: MIT
@@ -15,6 +18,9 @@
 
 ;; Nord is a 16 colorspace theme build to run in GUI- and terminal
 ;; mode with support for many third-party syntax- and UI packages.
+
+;; This project implements the Nord theme for the Emacs editor;
+;; it is a fork of a similar project called nordtheme/emacs.
 
 ;;; Code:
 
