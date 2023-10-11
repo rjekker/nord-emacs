@@ -272,7 +272,7 @@ be substituted using `fnord--get-colour'."
    `(whitespace-space-after-tab ,(fnord--face :foreground 3 :background 0))
    `(whitespace-space-before-tab ,(fnord--face :foreground 3 :background 0))
    `(whitespace-tab ,(fnord--face :foreground 3 :background 0))
-   `(whitespace-trailing ,(fnord--face :inherit 'trailing-whitespace))
+   `(whitespace-trailing ,(fnord--face :inherit 'trailing-whitespace :background 11))  
    `(widget-button-pressed ,(fnord--face :foreground 9 :background 1))
    `(widget-documentation ,(fnord--face :foreground 4))
    `(widget-field ,(fnord--face :background 2 :foreground 4))
@@ -284,7 +284,7 @@ be substituted using `fnord--get-colour'."
    `(tab-bar ((t (:inherit mode-line-inactive))))
    `(tab-bar-tab ((t (:inherit mode-line-highlight))))
    `(tab-bar-tab-inactive ((t (:inherit tab-bar)))) '(tab-line ((t nil)))
-   
+
     ;;;; +-----------------+
     ;;;; + Package Support +
     ;;;; +-----------------+
