@@ -113,7 +113,7 @@ be substituted using `fnord--get-colour'."
    `(italic ,(fnord--face :slant 'italic))
    `(region ,(fnord--face :foreground (or fnord-region-highlight-foreground 'unspecified) :background (or fnord-region-highlight-background 'unspecified)))   
    `(shadow ,(fnord--face :foreground 3))
-   `(underline ,(fnord--face :underline t))
+   `(underline ,(fnord--face :underline t))   
    `(warning ,(fnord--face :foreground 13 :weight 'bold))
 
    ;; +--- Syntax ---+
@@ -140,15 +140,17 @@ be substituted using `fnord--get-colour'."
    ;; +--- UI ---+
    `(border ,(fnord--face :foreground 4))
    `(buffer-menu-buffer ,(fnord--face :foreground 4 :weight 'bold))
-   `(button ,(fnord--face :background 0 :foreground 8 :box '(:line-width 2 :color 4 :style sunken-button)))
+   `(button ,(fnord--face :background 0 :foreground 8 :box (list :line-width 2 :color fnord-4 :style 'sunken-button)))
    `(completions-annotations ,(fnord--face :foreground 9))
    `(completions-common-part ,(fnord--face :foreground 8 :weight 'bold))
    `(completions-first-difference ,(fnord--face :foreground 11))
-   `(custom-button ,(fnord--face :background 0 :foreground 8 :box '(:line-width 2 :color 4 :style sunken-button)))
-   `(custom-button-mouse ,(fnord--face :background 4 :foreground 0 :box '(:line-width 2 :color 4 :style sunken-button)))
-   `(custom-button-pressed ,(fnord--face :background 6 :foreground 0 :box '(:line-width 2 :color 4 :style sunken-button)))
-   `(custom-button-pressed-unraised ,(fnord--face :background 4 :foreground 0 :box '(:line-width 2 :color 4 :style sunken-button)))
-   `(custom-button-unraised ,(fnord--face :background 0 :foreground 8 :box '(:line-width 2 :color 4 :style sunken-button)))
+   `(custom-button ,(fnord--face :background 0 :foreground 8 :box (list :line-width 2 :color fnord-4 :style 'sunken-button)))
+   `(custom-button-mouse ,(fnord--face :background 4 :foreground 0 :box (list :line-width 2 :color fnord-4 :style 'sunken-button)))
+   `(custom-button-pressed ,(fnord--face :background 6 :foreground 0 :box (list :line-width 2 :color fnord-4 :style 'sunken-button)))
+   `(custom-button-pressed-unraised ,(fnord--face :background 4 :foreground 0 :box
+                                                  (list :line-width 2 :color fnord-4 :style 'sunken-button)))
+   `(custom-button-unraised ,(fnord--face :background 0 :foreground 8 :box
+                                          (list :line-width 2 :color fnord-4 :style 'sunken-button)))
    `(custom-changed ,(fnord--face :foreground 13))
    `(custom-comment ,(fnord--face :foreground fnord-comment))
    `(custom-comment-tag ,(fnord--face :foreground 7))
@@ -217,7 +219,7 @@ be substituted using `fnord--get-colour'."
    `(package-status-new ,(fnord--face :foreground 14))
    `(package-status-incompat ,(fnord--face :foreground 11))
    `(package-status-installed ,(fnord--face :foreground 7 :weight 'bold))
-   `(package-status-unsigned ,(fnord--face :underline 13))
+   `(package-status-unsigned ,(fnord--face :underline t))
    `(query-replace ,(fnord--face :foreground 8 :background 2))
    `(scroll-bar ,(fnord--face :background 3))
    `(secondary-selection ,(fnord--face :background 2))
@@ -254,7 +256,7 @@ be substituted using `fnord--get-colour'."
    `(undo-tree-visualizer-register-face ,(fnord--face :foreground 9))
    `(vc-conflict-state ,(fnord--face :foreground 12))
    `(vc-edited-state ,(fnord--face :foreground 13))
-   `(vc-locally-added-state ,(fnord--face :underline 14))
+   `(vc-locally-added-state ,(fnord--face :underline t))
    `(vc-locked-state ,(fnord--face :foreground 10))
    `(vc-missing-state ,(fnord--face :foreground 11))
    `(vc-needs-update-state ,(fnord--face :foreground 12))
@@ -466,12 +468,12 @@ be substituted using `fnord--get-colour'."
    `(evil-ex-substitute-matches ,(fnord--face :inherit 'isearch))
 
    ;; > Flycheck
-   `(flycheck-error ,(fnord--face :underline '(:style wave :color 11)))
+   `(flycheck-error ,(fnord--face :underline (list :style 'wave :color fnord-11)))
    `(flycheck-fringe-error ,(fnord--face :foreground 11 :weight 'bold))
    `(flycheck-fringe-info ,(fnord--face :foreground 8 :weight 'bold))
    `(flycheck-fringe-warning ,(fnord--face :foreground 13 :weight 'bold))
-   `(flycheck-info ,(fnord--face :underline '(:style wave :color 8)))
-   `(flycheck-warning ,(fnord--face :underline '(:style wave :color 13)))
+   `(flycheck-info ,(fnord--face :underline (list :style 'wave :color fnord-8)))
+   `(flycheck-warning ,(fnord--face :underline (list :style 'wave :color fnord-13)))
 
    ;; > Git Gutter
    `(git-gutter:modified ,(fnord--face :foreground 13))
