@@ -111,6 +111,7 @@ be substituted using `fnord--get-colour'."
    `(font-lock-variable-name-face ,(fnord--face :foreground 4))
    `(font-lock-warning-face ,(fnord--face :foreground 13))
    `(italic ,(fnord--face :slant 'italic))
+   `(region ,(fnord--face :foreground (or fnord-region-highlight-foreground 'unspecified) :background (or fnord-region-highlight-background 'unspecified)))   
    `(shadow ,(fnord--face :foreground 3))
    `(underline ,(fnord--face :underline t))
    `(warning ,(fnord--face :foreground 13 :weight 'bold))
@@ -217,7 +218,6 @@ be substituted using `fnord--get-colour'."
    `(package-status-installed ,(fnord--face :foreground 7 :weight 'bold))
    `(package-status-unsigned ,(fnord--face :underline 13))
    `(query-replace ,(fnord--face :foreground 8 :background 2))
-   `(region ,(fnord--face :foreground (or fnord-region-highlight-foreground 'unspecified) :background (or fnord-region-highlight-background 'unspecified)))
    `(scroll-bar ,(fnord--face :background 3))
    `(secondary-selection ,(fnord--face :background 2))
 
@@ -281,6 +281,10 @@ be substituted using `fnord--get-colour'."
    `(window-divider-first-pixel ,(fnord--face :background 3))
    `(window-divider-last-pixel ,(fnord--face :background 3))
 
+   `(tab-bar ((t (:inherit mode-line-inactive))))
+   `(tab-bar-tab ((t (:inherit mode-line-highlight))))
+   `(tab-bar-tab-inactive ((t (:inherit tab-bar)))) '(tab-line ((t nil)))
+   
     ;;;; +-----------------+
     ;;;; + Package Support +
     ;;;; +-----------------+

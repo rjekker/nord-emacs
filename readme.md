@@ -12,4 +12,6 @@ more flexible/customizable.
 Differences between this project and [Nordtheme/emacs](https://github.com/nordtheme/emacs):
 
 - Fix [loading the theme in daemon mode](https://github.com/nordtheme/emacs/issues/59)
+- Fix [tab-bar support](https://github.com/nordtheme/emacs/issues/105)
+- Comment colour is customizable
 
