@@ -6,9 +6,8 @@
 ;; other copyright for project fnord-theme are held by Reindert-Jan Ekker
 ;; <info@rjekker.nl>, 2023-present.
 
-;; Title: Nord Theme
-;; Project: nord-emacs
-;; Version: 0.5.0
+;; Title: Fnord Theme
+;; Project: fnord-theme
 ;; URL: https://github.com/rjekker/fnord-theme
 ;; Author: Reindert-Jan Ekker
 ;; Package-Requires: ((emacs "24"))
@@ -27,9 +26,9 @@
 (unless (>= emacs-major-version 24)
   (error "Nord theme requires Emacs 24 or later!"))
 
-(deftheme nord "An arctic, north-bluish clean and elegant theme")
+(deftheme fnord "Nord, fixed: an arctic, north-bluish clean and elegant theme")
 
-(defgroup nord nil
+(defgroup fnord-theme nil
   "Nord theme customizations.
   The theme has to be reloaded after changing anything in this group."
   :group 'faces)
@@ -40,12 +39,18 @@
     - 'snowstorm' - Uses 'nord0' as foreground- and 'nord4' as background color
     - 'frost' - Uses 'nord0' as foreground- and 'nord8' as background color"
   :type 'string
-  :group 'nord)
+  :group 'fnord-theme)
 
 (defcustom nord-uniform-mode-lines nil
   "Enables uniform activate- and inactive mode lines using 'nord3' as background."
   :type 'boolean
-  :group 'nord)
+  :group 'fnord-theme)
+
+(defcustom nord-comment-colour "#616e88"
+  "A special colour for comments that is not in the original Nord palette.")
+
+(defcustom nord-comment-colour-256 "darkgrey"
+  "A special colour for comments that is not in the original Nord palette.")
 
 (defun nord-display-truecolor-or-graphic-p ()
   "Returns whether the display can display nord colors"
@@ -54,7 +59,7 @@
 (defcustom nord-0 "#2E3440"
   "Nord theme colour 0 - Polar Night. For background and area coloring."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-1 "#3B4252"
   "Nord theme colour 1 - a brighter shade based on `nord-0'.
@@ -68,7 +73,7 @@ For elevated, more prominent or focused UI elements like
 It also works fine for more inconspicuous and passive elements like borders
  or as dropshadow between different components."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-2 "#434C5E"
   "Nord theme colour 2 - an even brighter shade of `nord-0'.
@@ -76,14 +81,14 @@ Used to colorize the currently active text editor line as well as selection-
 and text highlighting color. It can also be used as an brighter variant for
 the same target elements like `nord-1'."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-3 "#4C566A"
   "Nord theme colour 3 - the brightest shade of `nord-0'.
 For UI elements like indent- and wrap guide marker. In the context of code
 syntax highlighting it is used for comments and invisible/non-printable characters."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-4 "#D8DEE9"
   "Nord theme colour 4 - Snow Storm.
@@ -91,7 +96,7 @@ For UI elements like the text editor caret.
 In the context of syntax highlighting it is used as text color for variables,
 constants, attributes and fields."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-5 "#E5E9F0"
   "Nord theme colour 5 - a brighter shade of `nord-4'.
@@ -99,7 +104,7 @@ Used for more subtle/inconspicuous UI text elements that do not need so much
 visual attention. Other use cases are also state animations like a more brighter
 text color when a button is hovered, active or focused."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-6 "#ECEFF4"
   "Nord theme colour 6 - the brightest shade of `nord-4'.
@@ -107,7 +112,7 @@ For elevated UI text elements that require more visual attention.
 In the context of syntax highlighting it is used as text color for plain text as
 well as reserved and structuring syntax characters like curly- and square brackets."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-7 "#8FBCBB"
   "Nord theme colour 7 - Frost: A calm and highly contrasted color.
@@ -115,7 +120,7 @@ Used for UI elements that should, next to the primary accent color nord8, stand
 out and get more visual attention.
 In the context of syntax highlighting it is used for classes, types and primitives."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-8 "#88C0D0"
   "Nord theme colour 8 - bright and shiny primary accent color.
@@ -123,7 +128,7 @@ Used for primary UI elements with main usage purposes that require the most
 visual attention. In the context of syntax highlighting it is used for
 declarations, calls and execution statements of functions, methods and routines."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-9 "#81A1C1"
   "Nord theme colour 9 - A more darkened and less saturated color.
@@ -137,7 +142,7 @@ specific, syntactic and reserved keywords as well as
 - units
 - punctuations like (semi)colons, points and commas."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-10 "#5E81AC"
   "Nord theme colour 10 - A dark and intensive color.
@@ -145,7 +150,7 @@ Used for tertiary UI elements that require more visual attention than default
 elements. In the context of syntax highlighting it is used for pragmas, comment
 keywords and pre-processor statements."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-11 "#BF616A"
   "Nord theme colour 11 - Aurora.
@@ -153,7 +158,7 @@ Used for UI elements that are rendering error states like linter markers and the
 highlighting of Git diff deletions. In the context of syntax highlighting it is
 used to override the highlighting of syntax elements that are detected as errors."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-12 "#D08770"
   "Nord theme colour 12.
@@ -161,7 +166,7 @@ Rarely used for UI elements, but it may indicate a more advanced or dangerous
 functionality. In the context of syntax highlighting it is used for special
 syntax elements like annotations and decorators."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-13 "#EBCB8B"
   "Nord theme colour 13.
@@ -170,7 +175,7 @@ the highlighting of Git diff modifications. In the context of syntax
 highlighting it is used to override the highlighting of syntax elements that are
 detected as warnings as well as escape characters and within regular expressions."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-14 "#A3BE8C"
   "Nord theme colour 14.
@@ -179,7 +184,7 @@ the highlighting of Git diff additions. In the context of syntax highlighting
 it is used as main color for strings of any type like double/single quoted or
 interpolated."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-15 "#B48EAD"
   "Nord theme colour 15.
@@ -187,91 +192,92 @@ Rarely used for UI elements, but it may indicate a more uncommon functionality.
 In the context of syntax highlighting it is used as main color for numbers of
 any type like integers and floating point numbers."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-1-256 "black"
   "Nord theme colour 1 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-2-256 "#434C5E"
   "Nord theme colour 2 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-3-256 "brightblack"
   "Nord theme colour 3 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-4-256 "#D8DEE9"
   "Nord theme colour 4 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-5-256 "white"
   "Nord theme colour 5 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-6-256 "brightwhite"
   "Nord theme colour 6 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-7-256 "cyan"
   "Nord theme colour 7 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-8-256 "brightcyan"
   "Nord theme colour 8 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-9-256 "blue"
   "Nord theme colour 9 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-10-256 "brightblue"
   "Nord theme colour 10 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-11-256 "red"
   "Nord theme colour 11 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-12-256 "brightyellow"
   "Nord theme colour 12 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-13-256 "yellow"
   "Nord theme colour 13 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-14-256 "green"
   "Nord theme colour 14 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 (defcustom nord-15-256 "magenta"
   "Nord theme colour 15 for terminals that do not support 256 colours."
   :type 'string
-  :group 'nord-theme)
+  :group 'fnord-theme)
 
 
 (defun nord--get-colour (n col-256)
-  "Retrieve nord colour N. If COL-256 is t, return the colour for terminals."
-  (cl-assert (and (>= n 0) (< n 16)))                  
+  "Retrieve nord colour N. If COL-256 is t, return the colour for terminals.
+Colour 16 is the special comment colour."
+  (cl-assert (and (>= n 0) (< n 17)))                  
   (when n
     (nth n (if col-256
-               (list nord-0 nord-1-256 nord-2-256 nord-3-256 nord-4-256 nord-5-256 nord-6-256 nord-7-256 nord-8-256 nord-9-256 nord-10-256 nord-11-256 nord-12-256 nord-13-256 nord-14-256 nord-15-256)
-             (list nord-0 nord-1 nord-2 nord-3 nord-4 nord-5 nord-6 nord-7 nord-8 nord-9 nord-10 nord-11 nord-12 nord-13 nord-14 nord-15)))))
+               (list nord-0 nord-1-256 nord-2-256 nord-3-256 nord-4-256 nord-5-256 nord-6-256 nord-7-256 nord-8-256 nord-9-256 nord-10-256 nord-11-256 nord-12-256 nord-13-256 nord-14-256 nord-15-256 nord-comment-colour-256)
+             (list nord-0 nord-1 nord-2 nord-3 nord-4 nord-5 nord-6 nord-7 nord-8 nord-9 nord-10 nord-11 nord-12 nord-13 nord-14 nord-15 nord-comment-colour)))))
 
 
 (defconst nord--class '((class color) (min-colors 257)))
@@ -294,21 +300,21 @@ be substituted using `nord--get-colour'."
 
 
 ;;;; Color Constants
-(let* ((nord-annotation 12)
+(let* ((nord-comment 16)
+       (nord-annotation 12)
        (nord-attribute 7)
        (nord-class 7)
-       (nord-comment (if (nord-display-truecolor-or-graphic-p)  "#616e88" "brightblack"))
        (nord-escape 12)
        (nord-method 8)
        (nord-keyword 9)
        (nord-numeric 15)
        (nord-operator 9)
        (nord-preprocessor (if (nord-display-truecolor-or-graphic-p) "#5E81AC" "brightblue"))
-       (nord-punctuation (if (nord-display-truecolor-or-graphic-p) "#D8DEE9" "#D8DEE9"))
-       (nord-regexp (if (nord-display-truecolor-or-graphic-p) "#EBCB8B" "yellow"))
-       (nord-string (if (nord-display-truecolor-or-graphic-p) "#A3BE8C" "green"))
+       (nord-punctuation 4)
+       (nord-regexp 13)
+       (nord-string 14)
        (nord-tag 9)
-       (nord-variable (if (nord-display-truecolor-or-graphic-p) "#D8DEE9" "#D8DEE9"))
+       (nord-variable 4)
        (nord-region-highlight-foreground (if (or
                                               (string= nord-region-highlight "frost")
                                               (string= nord-region-highlight "snowstorm")) "#2E3440" nil))
@@ -321,7 +327,7 @@ be substituted using `nord--get-colour'."
 ;;;; + Core Faces +
 ;;;; +------------+
   (custom-theme-set-faces
-   'nord
+   'fnord
    ;; +--- Base ---+
    `(bold ,(nord--face :weight 'bold))
    `(bold-italic ,(nord--face :weight 'bold :slant 'italic))
@@ -451,7 +457,7 @@ be substituted using `nord--get-colour'."
    `(package-status-installed ,(nord--face :foreground 7 :weight 'bold))
    `(package-status-unsigned ,(nord--face :underline 13))
    `(query-replace ,(nord--face :foreground 8 :background 2))
-   `(region ,(nord--face :foreground nord-region-highlight-foreground :background nord-region-highlight-background))
+   `(region ,(nord--face :foreground (or nord-region-highlight-foreground 'unspecified) :background (or nord-region-highlight-background 'unspecified)))
    `(scroll-bar ,(nord--face :background 3))
    `(secondary-selection ,(nord--face :background 2))
 
@@ -782,7 +788,7 @@ be substituted using `nord--get-colour'."
    `(mu4e-header-marks-face ,(nord--face :foreground 9))
    `(mu4e-title-face ,(nord--face :foreground 8))
    `(mu4e-header-key-face ,(nord--face :foreground 8))
-   `(mu4e-highlight-face ,(nord--face :highlight))
+   `(mu4e-highlight-face ,(nord--face :highlight t))
    `(mu4e-flagged-face ,(nord--face :foreground 13))
    `(mu4e-unread-face ,(nord--face :foreground 13 :weight 'bold))
    `(mu4e-link-face ,(nord--face :underline t))
@@ -819,90 +825,88 @@ be substituted using `nord--get-colour'."
    `(neo-vc-user-face ,(nord--face :foreground 4))
 
    ;; > Cider
-   `(cider-result-overlay-face ((t (:background unspecified)))
+   `(cider-result-overlay-face ((t (:background unspecified))))
 
-                               ;; > Org
-                               `(org-level-1 ,(nord--face :foreground 7 :weight extra-bold))
-                               `(org-level-2 ,(nord--face :foreground 8 :weight 'bold))
-                               `(org-level-3 ,(nord--face :foreground 9 :weight semi-bold))
-                               `(org-level-4 ,(nord--face :foreground 10 :weight normal))
-                               `(org-level-5 ,(nord--face :inherit 'org-level-4))
-                               `(org-level-6 ,(nord--face :inherit 'org-level-4))
-                               `(org-level-7 ,(nord--face :inherit 'org-level-4))
-                               `(org-level-8 ,(nord--face :inherit 'org-level-4))
-                               `(org-agenda-structure ,(nord--face :foreground 9))
-                               `(org-agenda-date ,(nord--face :foreground 8 :underline nil))
-                               `(org-agenda-done ,(nord--face :foreground 14))
-                               `(org-agenda-dimmed-todo-face ,(nord--face :background 13))
-                               `(org-block ,(nord--face :foreground 4))
-                               `(org-block-background ,(nord--face :background 0))
-                               `(org-block-begin-line ,(nord--face :foreground 7))
-                               `(org-block-end-line ,(nord--face :foreground 7))
-                               `(org-checkbox ,(nord--face :foreground 9))
-                               `(org-checkbox-statistics-done ,(nord--face :foreground 14))
-                               `(org-checkbox-statistics-todo ,(nord--face :foreground 13))
-                               `(org-code ,(nord--face :foreground 7))
-                               `(org-column ,(nord--face :background 2))
-                               `(org-column-title ,(nord--face :inherit 'org-column :weight 'bold :underline t))
-                               `(org-date ,(nord--face :foreground 8))
-                               `(org-document-info ,(nord--face :foreground 4))
-                               `(org-document-info-keyword ,(nord--face :foreground 3 :weight 'bold))
-                               `(org-document-title ,(nord--face :foreground 8 :weight 'bold))
-                               `(org-done ,(nord--face :foreground 14 :weight 'bold))
-                               `(org-ellipsis ,(nord--face :foreground 3))
-                               `(org-footnote ,(nord--face :foreground 8))
-                               `(org-formula ,(nord--face :foreground 9))
-                               `(org-hide ,(nord--face :foreground 0 :background 0))
-                               `(org-link ,(nord--face :underline t))
-                               `(org-scheduled ,(nord--face :foreground 14))
-                               `(org-scheduled-previously ,(nord--face :foreground 13))
-                               `(org-scheduled-today ,(nord--face :foreground 8))
-                               `(org-special-keyword ,(nord--face :foreground 9))
-                               `(org-table ,(nord--face :foreground 9))
-                               `(org-todo ,(nord--face :foreground 13 :weight 'bold))
-                               `(org-upcoming-deadline ,(nord--face :foreground 12))
-                               `(org-warning ,(nord--face :foreground 13 :weight 'bold))
-                               `(font-latex-bold-face ,(nord--face :inherit 'bold))
-                               `(font-latex-italic-face ,(nord--face :slant 'italic))
-                               `(font-latex-string-face ,(nord--face :foreground 14))
-                               `(font-latex-match-reference-keywords ,(nord--face :foreground 9))
-                               `(font-latex-match-variable-keywords ,(nord--face :foreground 4))
-                               `(ido-only-match ,(nord--face :foreground 8))
-                               `(org-sexp-date ,(nord--face :foreground 7))
-                               `(ido-first-match ,(nord--face :foreground 8 :weight 'bold))
-                               `(ido-subdir ,(nord--face :foreground 9))
-                               `(org-quote ,(nord--face :inherit 'org-block :slant 'italic))
-                               `(org-verse ,(nord--face :inherit 'org-block :slant 'italic))
-                               `(org-agenda-date-weekend ,(nord--face :foreground 9))
-                               `(org-agenda-date-today ,(nord--face :foreground 8 :weight 'bold))
-                               `(org-agenda-done ,(nord--face :foreground 14))
-                               `(org-verbatim ,(nord--face :foreground 7))
+   ;; > Org
+   `(org-level-1 ,(nord--face :foreground 7 :weight 'extra-bold))
+   `(org-level-2 ,(nord--face :foreground 8 :weight 'bold))
+   `(org-level-3 ,(nord--face :foreground 9 :weight 'semi-bold))
+   `(org-level-4 ,(nord--face :foreground 10 :weight 'normal))
+   `(org-level-5 ,(nord--face :inherit 'org-level-4))
+   `(org-level-6 ,(nord--face :inherit 'org-level-4))
+   `(org-level-7 ,(nord--face :inherit 'org-level-4))
+   `(org-level-8 ,(nord--face :inherit 'org-level-4))
+   `(org-agenda-structure ,(nord--face :foreground 9))
+   `(org-agenda-date ,(nord--face :foreground 8 :underline nil))
+   `(org-agenda-done ,(nord--face :foreground 14))
+   `(org-agenda-dimmed-todo-face ,(nord--face :background 13))
+   `(org-block ,(nord--face :foreground 4))
+   `(org-block-background ,(nord--face :background 0))
+   `(org-block-begin-line ,(nord--face :foreground 7))
+   `(org-block-end-line ,(nord--face :foreground 7))
+   `(org-checkbox ,(nord--face :foreground 9))
+   `(org-checkbox-statistics-done ,(nord--face :foreground 14))
+   `(org-checkbox-statistics-todo ,(nord--face :foreground 13))
+   `(org-code ,(nord--face :foreground 7))
+   `(org-column ,(nord--face :background 2))
+   `(org-column-title ,(nord--face :inherit 'org-column :weight 'bold :underline t))
+   `(org-date ,(nord--face :foreground 8))
+   `(org-document-info ,(nord--face :foreground 4))
+   `(org-document-info-keyword ,(nord--face :foreground 3 :weight 'bold))
+   `(org-document-title ,(nord--face :foreground 8 :weight 'bold))
+   `(org-done ,(nord--face :foreground 14 :weight 'bold))
+   `(org-ellipsis ,(nord--face :foreground 3))
+   `(org-footnote ,(nord--face :foreground 8))
+   `(org-formula ,(nord--face :foreground 9))
+   `(org-hide ,(nord--face :foreground 0 :background 0))
+   `(org-link ,(nord--face :underline t))
+   `(org-scheduled ,(nord--face :foreground 14))
+   `(org-scheduled-previously ,(nord--face :foreground 13))
+   `(org-scheduled-today ,(nord--face :foreground 8))
+   `(org-special-keyword ,(nord--face :foreground 9))
+   `(org-table ,(nord--face :foreground 9))
+   `(org-todo ,(nord--face :foreground 13 :weight 'bold))
+   `(org-upcoming-deadline ,(nord--face :foreground 12))
+   `(org-warning ,(nord--face :foreground 13 :weight 'bold))
+   `(font-latex-bold-face ,(nord--face :inherit 'bold))
+   `(font-latex-italic-face ,(nord--face :slant 'italic))
+   `(font-latex-string-face ,(nord--face :foreground 14))
+   `(font-latex-match-reference-keywords ,(nord--face :foreground 9))
+   `(font-latex-match-variable-keywords ,(nord--face :foreground 4))
+   `(ido-only-match ,(nord--face :foreground 8))
+   `(org-sexp-date ,(nord--face :foreground 7))
+   `(ido-first-match ,(nord--face :foreground 8 :weight 'bold))
+   `(ido-subdir ,(nord--face :foreground 9))
+   `(org-quote ,(nord--face :inherit 'org-block :slant 'italic))
+   `(org-verse ,(nord--face :inherit 'org-block :slant 'italic))
+   `(org-agenda-date-weekend ,(nord--face :foreground 9))
+   `(org-agenda-date-today ,(nord--face :foreground 8 :weight 'bold))
+   `(org-agenda-done ,(nord--face :foreground 14))
+   `(org-verbatim ,(nord--face :foreground 7))
 
-                               ;; > ivy-mode
-                               `(ivy-current-match ,(nord--face :inherit 'region))
-                               `(ivy-minibuffer-match-face-1 ,(nord--face :inherit 'default))
-                               `(ivy-minibuffer-match-face-2 ,(nord--face :background 7 :foreground 0))
-                               `(ivy-minibuffer-match-face-3 ,(nord--face :background 8 :foreground 0))
-                               `(ivy-minibuffer-match-face-4 ,(nord--face :background 9 :foreground 0))
-                               `(ivy-remote ,(nord--face :foreground 14))
-                               `(ivy-posframe ,(nord--face :background 1))
-                               `(ivy-posframe-border ,(nord--face :background 1))
-                               `(ivy-remote ,(nord--face :foreground 14))
+   ;; > ivy-mode
+   `(ivy-current-match ,(nord--face :inherit 'region))
+   `(ivy-minibuffer-match-face-1 ,(nord--face :inherit 'default))
+   `(ivy-minibuffer-match-face-2 ,(nord--face :background 7 :foreground 0))
+   `(ivy-minibuffer-match-face-3 ,(nord--face :background 8 :foreground 0))
+   `(ivy-minibuffer-match-face-4 ,(nord--face :background 9 :foreground 0))
+   `(ivy-remote ,(nord--face :foreground 14))
+   `(ivy-posframe ,(nord--face :background 1))
+   `(ivy-posframe-border ,(nord--face :background 1))
+   `(ivy-remote ,(nord--face :foreground 14))
 
-                               ;; > perspective
-                               `(persp-selected-face ,(nord--face :foreground 8 :weight 'bold)))))
+   ;; > perspective
+   `(persp-selected-face ,(nord--face :foreground 8 :weight 'bold))))
 
-
-;;;###autoload
 (when (and (boundp 'custom-theme-load-path) load-file-name)
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'fnord)
+  (provide-theme 'fnord)
 
-;; Local Variables:
-;; no-byte-compile: t
-;; indent-tabs-mode: nil
-;; End:
+  ;; Local Variables:
+  ;; no-byte-compile: t
+  ;; indent-tabs-mode: nil
+  ;; End:
 
 ;;; fnord-theme.el ends here
