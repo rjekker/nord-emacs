@@ -551,15 +551,26 @@ be substituted using `fnord--get-colour'."
    `(magit-section-heading ,(fnord--face :foreground 7 :weight 'bold))
    `(magit-section-highlight ,(fnord--face :background 2))
 
+   ;; gnus
+   `(gnus-header-name ,(fnord--face :foreground 9))
+   `(gnus-header ,(fnord--face :foreground 8))
+   `(gnus-header-content ,(fnord--face :foreground 8))
+   `(gnus-header-from ,(fnord--face :foreground 8))
+   `(gnus-header-newsgroups ,(fnord--face :foreground 8))
+   `(gnus-header-subject ,(fnord--face :foreground 8))
+      
    ;; > MU4E
-   `(mu4e-header-marks-face ,(fnord--face :foreground 9))
-   `(mu4e-title-face ,(fnord--face :foreground 8))
-   `(mu4e-header-key-face ,(fnord--face :foreground 8))
+   `(mu4e-header-marks-face ,(fnord--face :foreground 13))
+   
    `(mu4e-highlight-face ,(fnord--face :highlight t))
-   `(mu4e-flagged-face ,(fnord--face :foreground 13))
-   `(mu4e-unread-face ,(fnord--face :foreground 13 :weight 'bold))
+   `(mu4e-flagged-face ,(fnord--face :foreground 12))
+   `(mu4e-forwarded-face ,(fnord--face :foreground 7))
+   `(mu4e-unread-face ,(fnord--face :foreground 8 :weight 'bold))
+   `(mu4e-read-face ,(fnord--face :foreground 9))
+   `(mu4e-replied-face ,(fnord--face :foreground 7))
    `(mu4e-link-face ,(fnord--face :underline t))
-
+   `(mu4e-draft-face ,(fnord--face :foreground 15))
+   
    ;; > Powerline
    `(powerline-active1 ,(fnord--face :foreground 4 :background 1))
    `(powerline-active2 ,(fnord--face :foreground 4 :background 3))
