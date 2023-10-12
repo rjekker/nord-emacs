@@ -24,7 +24,7 @@
 ;;; Code:
 
 (unless (>= emacs-major-version 24)
-  (error "Nord theme requires Emacs 24 or later!"))
+  (error "fnord-theme requires Emacs 24 or later"))
 
 (deftheme fnord "Nord, fixed: an arctic, north-bluish clean and elegant theme")
 
@@ -244,6 +244,15 @@ be substituted using `fnord--get-colour'."
    `(term-color-yellow ,(fnord--face :foreground 13 :background 13))
    `(term-color-green ,(fnord--face :foreground 14 :background 14))
    `(term-color-magenta ,(fnord--face :foreground 15 :background 15))
+   `(ansi-color-black ,(fnord--face :foreground 1 :background 1))
+   `(ansi-color-white ,(fnord--face :foreground 5 :background 5))
+   `(ansi-color-cyan ,(fnord--face :foreground 7 :background 7))
+   `(ansi-color-blue ,(fnord--face :foreground 8 :background 8))
+   `(ansi-color-red ,(fnord--face :foreground 11 :background 11))
+   `(ansi-color-yellow ,(fnord--face :foreground 13 :background 13))
+   `(ansi-color-green ,(fnord--face :foreground 14 :background 14))
+   `(ansi-color-magenta ,(fnord--face :foreground 15 :background 15))
+   
    `(tool-bar ,(fnord--face :foreground 4 :background 3))
    `(tooltip ,(fnord--face :foreground 0 :background 4))
    `(trailing-whitespace ,(fnord--face :foreground 3))
