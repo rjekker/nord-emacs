@@ -29,33 +29,9 @@
 (deftheme fnord "Nord, fixed: an arctic, north-bluish clean and elegant theme.")
 
 (require 'fnord-colours)
+(require 'fnord-functions)
+(require 'fnord-custom)
 (require 'fnord-core)
-
-(defconst fnord--class '((class color) (min-colors 257)))
-
-
-(defun fnord--subst-colours (face-spec)
-  "If foreground or background in FACE-SPEC are ints, replace with fnord colour.
-This now also supports the :color property of :box"
-  (dolist (prop '(:foreground :background :distant-foreground :distant-background))
-    (when-let ((val (plist-get face-spec prop)))
-      (when (integerp val)
-        (plist-put face-spec prop (fnord--get-colour val)))))
-  ;; TODO add support for colours in :underline attributes
-  (when-let ((box (plist-get face-spec :box)))
-    (when-let ((val (plist-get box :color)))
-      (when (integerp val)
-        (plist-put box :color (fnord--get-colour val)))))
-  face-spec)
-
-(defun fnord--face (face-spec)
-  "Create FACE-SPEC where foreground and background can be numbers.
-Those will be substituted using `fnord--get-colour'."
-  (let ((face (car face-spec))
-        (spec (cdr face-spec)))
-    `(,face ((,fnord--class . ,(fnord--subst-colours spec))))))
-
-
 
 ;;;; Color Constants
 (let* ((fnord-comment 16)

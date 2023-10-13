@@ -182,14 +182,6 @@ any type like integers and floating point numbers."
   :group 'fnord-theme-colours)
 
 (require 'cl-lib)
-(defun fnord--get-colour (n)
-  "Retrieve nord colour N. Colour 16 is the special comment colour."
-  (cl-assert (and (>= n 0) (< n 17)))
-  (when n
-    (nth n
-         (list fnord-0 fnord-01 fnord-02 fnord-03 fnord-04 fnord-05 fnord-06 fnord-07 fnord-08 fnord-09 fnord-10 fnord-11 fnord-12 fnord-13 fnord-14 fnord-15 fnord-comment-colour))))
-
-
 
 (provide 'fnord-colours)
 

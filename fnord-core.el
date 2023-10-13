@@ -18,6 +18,7 @@
 ;;; Code:
 
 (require 'fnord-colours)
+(require 'fnord-custom)
 
 
 (defface fnord--loaded-dummy
@@ -26,82 +27,10 @@
 
 
 (defun fnord--theme-loaded-p ()
+  "Return t when fnord theme has been loaded.
+If you loaded another theme after fnord, this will still return t."
   (eq 'bold
       (face-attribute 'fnord--loaded-dummy :weight )))
-
-
-(defun fnord--change-face-attr (face attr value)
-  "Set a single attribute ATTR of FACE to VALUE.
-If VALUE is nil, it will be set to `unspecified'."
-  (set-face-attribute face nil
-                      attr
-                      (pcase value
-                        ((pred null) 'unspecified)
-                        (_ value))))
-
-(defun fnord--change-face-colour (face attr value)
-  "Set a single colour attribute ATTR of FACE to VALUE.
-Can pass ints for nord colours.
-If VALUE is nil, it will be set to `unspecified'."
-  (fnord--change-face-attr face attr
-                           (pcase value
-                             ((pred integerp) (fnord--get-colour value))
-                             ((pred stringp)
-                              (unless (string-prefix-p "#" value)
-                                (error (format "%s is not a valid color code (should start with #)" value)))))))
-
-(defun fnord--update-custom-face-attr (symbol value face attr)
-  "Update ATTR for FACE after its customization has changed."
-  (when (fnord--theme-loaded-p)
-    (fnord--change-face-attr face attr value))
-  (set-default-toplevel-value symbol value))
-
-
-(defun fnord--update-custom-face-colour (symbol value face attr)
-  "Update colour ATTR for FACE after its customization has changed."
-  (when (fnord--theme-loaded-p)
-    (fnord--change-face-colour face attr value))
-  (set-default-toplevel-value symbol value))
-
-
-(defcustom fnord-region-foreground 'unspecified
-  "Foreground color for the region.
-If set as an int: use a fnord theme colour.
-Alternatively, use a string to choose your own colour code. Note that the string
-has to be a valid colour code like \"#A01A02\""
-  :type '(choice (integer :tag "fnord theme colour" :default 0)
-                 (string :tag "colour code")
-                 (symbol :tag "unspecified" :value unspecified))
-  :group 'fnord-theme
-  :set (lambda (symbol value)
-         (fnord--update-custom-face-colour symbol value 'region :foreground)))
-
-
-(defcustom fnord-region-distant-foreground 4
-  "Distant-foreground color for the region.
-Used when contrast between foreground and background is low.
-If set as an int: use a fnord theme colour.
-Alternatively, use a string to choose your own colour code. Note that the string
-has to be a valid colour code like \"#A01A02\""
-  :type '(choice (integer :tag "fnord theme colour" :default 0)
-                 (string :tag "colour code")
-                 (symbol :tag "unspecified" :value unspecified))
-  :group 'fnord-theme
-  :set (lambda (symbol value)
-         (fnord--update-custom-face-colour symbol value 'region :distant-foreground)))
-
-
-(defcustom fnord-region-background 2
-  "Background color for the region.
-If set as an int: use a fnord theme colour.
-Alternatively, use a string to choose your own colour code. Note that the string
-has to be a valid colour code like \"#A01A02\""
-  :type '(choice (integer :tag "fnord theme colour" :default 0)
-                 (string :tag "colour code")
-                 (symbol :tag "unspecified" :value unspecified))
-  :group 'fnord-theme
-  :set (lambda (symbol value)
-         (fnord--update-custom-face-colour symbol value 'region :background)))
 
 
 (setopt custom-raised-buttons t)
@@ -158,10 +87,10 @@ has to be a valid colour code like \"#A01A02\""
     (font-lock-warning-face :foreground 13)
 
     (completions-annotations :foreground 9)
-    (completions-common-part :foreground 8 :weight 'bold)
+    (completions-common-part :foreground 8 :weight bold)
     (completions-first-difference :foreground 11)
     
-    (buffer-menu-buffer :foreground 4 :weight 'bold)
+    (buffer-menu-buffer :foreground 4 :weight bold)
 
     (button :background 0 :foreground 8 :box (:line-width 1 :color 9 :style released-button))
     (widget-button-pressed :background 3 :foreground 7 :box (:line-width 1 :color 9 :style pressed-button))
@@ -176,7 +105,7 @@ has to be a valid colour code like \"#A01A02\""
     (custom-button-pressed-unraised  :background 3 :foreground 7 :box (:line-width 1 :color 9 :style flat-button))
     (custom-button-unraised :background 0 :foreground 8 :box (:line-width 1 :color 9 :style flat-button))
     (custom-changed :foreground 13)
-    (custom-comment :foreground fnord-comment)
+    (custom-comment :foreground 16)
     (custom-comment-tag :foreground 7)
     (custom-documentation :foreground 4)
     (custom-group-tag :foreground 8 :weight bold)
@@ -194,6 +123,7 @@ has to be a valid colour code like \"#A01A02\""
     (file-name-shadow :inherit shadow)
     (help-argument-name :foreground 8)
 
+    ;; info-mode
     (info-title-4 :foreground 7 :weight bold :inherit variable-pitch)
     (info-title-1 :height 1.2 :inherit info-title-2)
     (info-title-2 :height 1.2 :inherit info-title-3)
@@ -205,8 +135,9 @@ has to be a valid colour code like \"#A01A02\""
     ;; search/replace
     (isearch :foreground 0 :background 8)
     (isearch-fail :foreground 11)
-    (match :inherit :isearch)
-    (query-replace :foreground 8 :background w)
+    (match :inherit isearch)
+    (query-replace :inherit isearch)
+    (lazy-highlight :inherit isearch :foreground 6)
     
 
     (linum :foreground 3 :background 0)
