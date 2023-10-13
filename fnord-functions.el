@@ -37,7 +37,17 @@ This now also supports the :color property of :box"
     (when-let ((val (plist-get face-spec prop)))
       (when (integerp val)
         (plist-put face-spec prop (fnord--get-colour val)))))
-  ;; TODO add support for colours in :underline attributes
+  (when-let ((underline_val (plist-get face-spec :underline)))
+    (pcase underline_val
+      ((pred integerp)
+       ;; :underline given as integer color value
+       (plist-put face-spec :underline (fnord--get-colour underline_val)))
+      ((pred listp)
+       ;; underline has list value that might include a color
+       (when-let ((val (plist-get underline_val :color)))
+         (when (integerp val)
+           (plist-put underline_val :color (fnord--get-colour val)))))))
+  
   (when-let ((box (plist-get face-spec :box)))
     (when-let ((val (plist-get box :color)))
       (when (integerp val)
