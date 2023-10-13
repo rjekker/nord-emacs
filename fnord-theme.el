@@ -247,7 +247,8 @@
     ;;             `(window-divider-first-pixel :background 3)
     ;;             `(window-divider-last-pixel :background 3)
 
-    ;;             `(tab-bar ((t (:inherit mode-line-inactive))))
+    ;;            
+ `(tab-bar ((t (:inherit mode-line-inactive))))
     ;;             `(tab-bar-tab ((t (:inherit mode-line-highlight))))
     ;;             `(tab-bar-tab-inactive ((t (:inherit tab-bar)))) '(tab-line ((t nil)))
 

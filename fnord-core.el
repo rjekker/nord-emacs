@@ -20,8 +20,11 @@
 (require 'fnord-colours)
 (require 'fnord-custom)
 
-
+;; TODO customize raised buttons
 (setopt custom-raised-buttons t)
+(add-hook 'calendar-today-visible-hook 'calendar-mark-today)
+
+(setq holiday-other-holidays '((holiday-fixed 10 20 "Bastille Day")))
 
 (defvar fnord--faces
   `(;; add a dummy face  so we can detect whether theme was loaded
@@ -61,7 +64,9 @@
     (calendar-weekday-header :foreground 8)
     (calendar-weekend-header :foreground 15)
     (calendar-today :foreground 14 :weight bold)
-
+    (diary :foreground 7)
+    (holiday :foreground 10 :background 0)
+    
     (completions-annotations :foreground 9)
     (completions-common-part :foreground 8 :weight bold)
     (completions-first-difference :foreground 11)
@@ -151,7 +156,10 @@
     (mode-line-inactive :foreground 4 :background 1)
     (next-error :inherit error)
     (nobreak-space :foreground 3)
-    
+
+    ;; TODO customize:
+    ;; org block and table backgrounds
+    ;; org header heights (zie info headers) - ook gebruiken voor outline
     (org-level-1 :foreground 7 :weight extra-bold)
     (org-level-2 :foreground 8 :weight bold)
     (org-level-3 :foreground 9 :weight semi-bold)
@@ -228,7 +236,7 @@
     (package-status-new :foreground 14)
     (package-status-incompat :foreground 11)
     (package-status-installed :foreground 7 :weight bold)
-    (package-status-unsigned :underline t)
+    (package-status-unsigned :underline 13)
 
     (scroll-bar :background 3)
     (secondary-selection :background 2)
@@ -265,7 +273,7 @@
     (undo-tree-visualizer-register-face :foreground 9)
     (vc-conflict-state :foreground 12)
     (vc-edited-state :foreground 13)
-    (vc-locally-added-state :underline t)
+    (vc-locally-added-state :underline 14)
     (vc-locked-state :foreground 10)
     (vc-missing-state :foreground 11)
     (vc-needs-update-state :foreground 12)
@@ -293,9 +301,8 @@
     (tab-bar :inherit mode-line-inactive)
     (tab-bar-tab :inherit mode-line-highlight)
     (tab-bar-tab-inactive :inherit tab-bar))
-    
-    
-    "The list of faces defined by the fnord theme.
+  
+  "The list of faces defined by the fnord theme.
 Foreground and background colours can be ints, in which
 case they will be converted to fnord theme colours.")
 
