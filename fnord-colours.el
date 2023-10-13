@@ -27,7 +27,7 @@ The theme has to be reloaded after changing anything in this group."
   :group 'fnord-theme
   :link '(url-link "https://www.nordtheme.com/docs/colors-and-palettes"))
 
-(defcustom fnord-comment-colour "#616e88"
+(defcustom fnord-comment-colour "#7b88a1"
   "Fnord theme colour 16 - A special colour for comments.
 This colour is not in the original Nord palette."
   :type 'string
