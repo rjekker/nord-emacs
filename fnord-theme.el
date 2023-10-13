@@ -37,13 +37,13 @@
 (defun fnord--subst-colours (face-spec)
   "If foreground or background in FACE-SPEC are ints, replace with fnord colour.
 This now also supports the :color property of :box"
-  (dolist (prop '(:foreground :background))
+  (dolist (prop '(:foreground :background :distant-foreground :distant-background))
     (when-let ((val (plist-get face-spec prop)))
-      (when (numberp val)
+      (when (integerp val)
         (plist-put face-spec prop (fnord--get-colour val)))))
   (when-let ((box (plist-get face-spec :box)))
     (when-let ((val (plist-get box :color)))
-      (when (numberp val)
+      (when (integerp val)
         (plist-put box :color (fnord--get-colour val)))))
   face-spec)
 

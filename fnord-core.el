@@ -22,7 +22,7 @@
 
 (defface fnord--loaded-dummy
   '((t (:weight normal)))
-  "A dummy face we can use to check whether fnord theme was loaded")
+  "A dummy face we can use to check whether fnord theme was loaded.")
 
 
 (defun fnord--theme-loaded-p ()
@@ -30,23 +30,40 @@
       (face-attribute 'fnord--loaded-dummy :weight )))
 
 
-(defun fnord--change-face (face attr value)
-  "Change a face attribute. Can pass ints for nord colourd. Nice for testing."
-    (set-face-attribute face nil
-                        attr
-                        (if (numberp value)
-                            (fnord--get-colour value)
-                          value)))
+(defun fnord--change-face-attr (face attr value)
+  "Set a single attribute ATTR of FACE to VALUE.
+If VALUE is nil, it will be set to `unspecified'."
+  (set-face-attribute face nil
+                      attr
+                      (pcase value
+                        ((pred null) 'unspecified)
+                        (_ value))))
 
+(defun fnord--change-face-colour (face attr value)
+  "Set a single colour attribute ATTR of FACE to VALUE.
+Can pass ints for nord colours.
+If VALUE is nil, it will be set to `unspecified'."
+  (fnord--change-face-attr face attr
+                           (pcase value
+                             ((pred integerp) (fnord--get-colour value))
+                             ((pred stringp)
+                              (unless (string-prefix-p "#" value)
+                                (error (format "%s is not a valid color code (should start with #)" value)))))))
 
-(defun fnord--update-custom-face (symbol value face attr)
+(defun fnord--update-custom-face-attr (symbol value face attr)
   (when (fnord--theme-loaded-p)
-    (fnord--change-face face attr value))
+    (fnord--change-face-attr face attr value))
+  (set-default-toplevel-value symbol value))
+
+
+(defun fnord--update-custom-face-colour (symbol value face attr)
+  (when (fnord--theme-loaded-p)
+    (fnord--change-face-colour face attr value))
   (set-default-toplevel-value symbol value))
 
 
 
-(defcustom fnord-region-highlight-foreground nil
+(defcustom fnord-region-foreground 'unspecified
   "Foreground color for the region.
 If set as an int: use a fnord theme colour.
 Alternatively, use a string to choose your own colour code. Note that the string
@@ -56,11 +73,24 @@ has to be a valid colour code like \"#A01A02\""
                  (symbol :tag "unspecified" :value unspecified))
   :group 'fnord-theme
   :set (lambda (symbol value)
-         (fnord--update-custom-face symbol value 'region :foreground)))
+         (fnord--update-custom-face-colour symbol value 'region :foreground)))
+
+
+(defcustom fnord-region-distant-foreground 4
+  "Distant-foreground color for the region.
+If set as an int: use a fnord theme colour.
+Alternatively, use a string to choose your own colour code. Note that the string
+has to be a valid colour code like \"#A01A02\""
+  :type '(choice (integer :tag "fnord theme colour" :default 0)
+                 (string :tag "colour code")
+                 (symbol :tag "unspecified" :value unspecified))
+  :group 'fnord-theme
+  :set (lambda (symbol value)
+         (fnord--update-custom-face-colour symbol value 'region :distant-foreground)))
 
 
 
-(defcustom fnord-region-highlight-background 2
+(defcustom fnord-region-background 2
   "Background color for the region.
 If set as an int: use a fnord theme colour.
 Alternatively, use a string to choose your own colour code. Note that the string
@@ -70,7 +100,7 @@ has to be a valid colour code like \"#A01A02\""
                  (symbol :tag "unspecified" :value unspecified))
   :group 'fnord-theme
   :set (lambda (symbol value)
-         (fnord--update-custom-face symbol value 'region :background)))
+         (fnord--update-custom-face-colour symbol value 'region :background)))
 
 
 (defcustom fnord-uniform-mode-lines nil
@@ -101,10 +131,11 @@ has to be a valid colour code like \"#A01A02\""
     (link-visited :underline t)
     
     ;; highlighting
-    (region :foreground ,(or fnord-region-highlight-foreground 'unspecified)
-            :background ,(or fnord-region-highlight-background 'unspecified))
+    (region :foreground ,fnord-region-foreground
+            :background ,fnord-region-background
+            :distant-foreground ,fnord-region-distant-foreground)
     (highlight :foreground 8 :background 3)
-    (hl-line :background 3)
+    (hl-line :background 3 :distant-foreground 4)
     
     ;; windows and frames
     (border :foreground 4)
@@ -333,9 +364,9 @@ has to be a valid colour code like \"#A01A02\""
     (tab-bar :inherit mode-line-inactive)
     (tab-bar-tab :inherit mode-line-highlight)
     (tab-bar-tab-inactive :inherit tab-bar))
-    
-    
-    "The list of faces defined by the fnord theme.
+  
+  
+  "The list of faces defined by the fnord theme.
 Foreground and background colours can be ints, in which
 case they will be converted to fnord theme colours.")
 
