@@ -21,18 +21,6 @@
 (require 'fnord-custom)
 
 
-(defface fnord--loaded-dummy
-  '((t (:weight normal)))
-  "A dummy face we can use to check whether fnord theme was loaded.")
-
-
-(defun fnord--theme-loaded-p ()
-  "Return t when fnord theme has been loaded.
-If you loaded another theme after fnord, this will still return t."
-  (eq 'bold
-      (face-attribute 'fnord--loaded-dummy :weight )))
-
-
 (setopt custom-raised-buttons t)
 
 (defvar fnord--faces

@@ -19,6 +19,33 @@
 
 (require 'fnord-functions)
 
+(defface fnord--loaded-dummy
+  '((t (:weight normal)))
+  "A dummy face we can use to check whether fnord theme was loaded.")
+
+
+(defun fnord--theme-loaded-p ()
+  "Return t when fnord theme has been loaded.
+If you loaded another theme after fnord, this will still return t."
+  (eq 'bold
+      (face-attribute 'fnord--loaded-dummy :weight )))
+
+
+(defun fnord--update-custom-face-attr (symbol value face attr)
+  "Update ATTR for FACE after its customization has changed."
+  (when (fnord--theme-loaded-p)
+    (fnord--change-face-attr face attr value))
+  (set-default-toplevel-value symbol value))
+
+
+(defun fnord--update-custom-face-colour (symbol value face attr)
+  "Update colour ATTR for FACE after its customization has changed."
+  (when (fnord--theme-loaded-p)
+    (fnord--change-face-colour face attr value))
+  (set-default-toplevel-value symbol value))
+
+
+
 (defcustom fnord-region-foreground 'unspecified
   "Foreground color for the region.
 If set as an int: use a fnord theme colour.

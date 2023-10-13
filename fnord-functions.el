@@ -82,21 +82,6 @@ If VALUE is nil, it will be set to `unspecified'."
                               (unless (string-prefix-p "#" value)
                                 (error (format "%s is not a valid color code (should start with #)" value)))))))
 
-
-(declare-function fnord--theme-loaded-p "fnord-core.el")
-(defun fnord--update-custom-face-attr (symbol value face attr)
-  "Update ATTR for FACE after its customization has changed."
-  (when (fnord--theme-loaded-p)
-    (fnord--change-face-attr face attr value))
-  (set-default-toplevel-value symbol value))
-
-
-(defun fnord--update-custom-face-colour (symbol value face attr)
-  "Update colour ATTR for FACE after its customization has changed."
-  (when (fnord--theme-loaded-p)
-    (fnord--change-face-colour face attr value))
-  (set-default-toplevel-value symbol value))
-
 (provide 'fnord-functions)
 
 ;;; fnord-functions.el ends here
