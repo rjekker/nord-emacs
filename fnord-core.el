@@ -42,6 +42,8 @@
 
     (link :underline t :foreground 8)
     (link-visited :underline t)
+
+    (bookmark-face :foreground 12 :distant-foreground 12)
     
     ;; highlighting
     (region :foreground ,fnord-region-foreground
@@ -55,6 +57,19 @@
     (fringe :foreground 4 :background 0)
     (header-line :foreground 4 :background 2)
 
+    (calendar-month-header :foreground 7)
+    (calendar-weekday-header :foreground 8)
+    (calendar-weekend-header :foreground 15)
+    (calendar-today :foreground 14 :weight bold)
+
+    (completions-annotations :foreground 9)
+    (completions-common-part :foreground 8 :weight bold)
+    (completions-first-difference :foreground 11)
+    
+    (compilation-mode-line-exit :foreground 14)
+    (compilation-mode-line-fail :foreground 11)
+
+    (confusingly-reordered :underline (:style wave :color 11))
     ;; font-lock
     (font-lock-builtin-face :foreground 9)
     (font-lock-comment-face :foreground 16)
@@ -73,12 +88,8 @@
     (font-lock-type-face :foreground 7)
     (font-lock-variable-name-face :foreground 4)
     (font-lock-warning-face :foreground 13)
-
-    (completions-annotations :foreground 9)
-    (completions-common-part :foreground 8 :weight bold)
-    (completions-first-difference :foreground 11)
     
-    (buffer-menu-buffer :foreground 4 :weight bold)
+    (buffer-menu-buffer :foreground 7 :weight bold)
 
     (button :background 0 :foreground 8 :box (:line-width 1 :color 9 :style released-button))
     (widget-button-pressed :background 3 :foreground 7 :box (:line-width 1 :color 9 :style pressed-button))
