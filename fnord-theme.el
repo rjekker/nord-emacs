@@ -41,6 +41,7 @@ This now also supports the :color property of :box"
     (when-let ((val (plist-get face-spec prop)))
       (when (integerp val)
         (plist-put face-spec prop (fnord--get-colour val)))))
+  ;; TODO add support for colours in :underline attributes
   (when-let ((box (plist-get face-spec :box)))
     (when-let ((val (plist-get box :color)))
       (when (integerp val)
@@ -72,12 +73,6 @@ Those will be substituted using `fnord--get-colour'."
        (fnord-string 14)
        (fnord-tag 9)
        (fnord-variable 4)
-       ;; (fnord-region-highlight-foreground (if (or
-       ;;                                         (string= fnord-region-highlight "frost")
-       ;;                                         (string= fnord-region-highlight "snowstorm")) "#2E3440" nil))
-       ;; (fnord-region-highlight-background (if
-       ;;                                        (string= fnord-region-highlight "frost") "#88C0D0"
-       ;;                                      (if (string= fnord-region-highlight "snowstorm") "#D8DEE9" "#434C5E")))
        ;; (fnord-uniform-mode-lines-background (if fnord-uniform-mode-lines "#4C566A" "#3B4252"))
        )
 

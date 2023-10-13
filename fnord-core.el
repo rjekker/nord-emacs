@@ -51,16 +51,17 @@ If VALUE is nil, it will be set to `unspecified'."
                                 (error (format "%s is not a valid color code (should start with #)" value)))))))
 
 (defun fnord--update-custom-face-attr (symbol value face attr)
+  "Update ATTR for FACE after its customization has changed."
   (when (fnord--theme-loaded-p)
     (fnord--change-face-attr face attr value))
   (set-default-toplevel-value symbol value))
 
 
 (defun fnord--update-custom-face-colour (symbol value face attr)
+  "Update colour ATTR for FACE after its customization has changed."
   (when (fnord--theme-loaded-p)
     (fnord--change-face-colour face attr value))
   (set-default-toplevel-value symbol value))
-
 
 
 (defcustom fnord-region-foreground 'unspecified
@@ -78,6 +79,7 @@ has to be a valid colour code like \"#A01A02\""
 
 (defcustom fnord-region-distant-foreground 4
   "Distant-foreground color for the region.
+Used when contrast between foreground and background is low.
 If set as an int: use a fnord theme colour.
 Alternatively, use a string to choose your own colour code. Note that the string
 has to be a valid colour code like \"#A01A02\""
@@ -87,7 +89,6 @@ has to be a valid colour code like \"#A01A02\""
   :group 'fnord-theme
   :set (lambda (symbol value)
          (fnord--update-custom-face-colour symbol value 'region :distant-foreground)))
-
 
 
 (defcustom fnord-region-background 2
@@ -102,11 +103,6 @@ has to be a valid colour code like \"#A01A02\""
   :set (lambda (symbol value)
          (fnord--update-custom-face-colour symbol value 'region :background)))
 
-
-(defcustom fnord-uniform-mode-lines nil
-  "Enables uniform activate- and inactive mode lines using 'nord3' as background."
-  :type 'boolean
-  :group 'fnord-theme)
 
 (setopt custom-raised-buttons t)
 
