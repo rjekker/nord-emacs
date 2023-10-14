@@ -45,45 +45,54 @@ If you loaded another theme after fnord, this will still return t."
   (set-default-toplevel-value symbol value))
 
 
+(defun fnord--update-custom-face (symbol value face)
+  "Set FACE to spec VALUE after customization of SYMBOL."
+  (when (fnord--theme-loaded-p)
+    (fnord--set-face face value))
+  (set-default-toplevel-value symbol value))
 
-(defcustom fnord-region-foreground 'unspecified
-  "Foreground color for the region.
-If set as an int: use a fnord theme colour.
-Alternatively, use a string to choose your own colour code. Note that the string
-has to be a valid colour code like \"#A01A02\""
-  :type '(choice (integer :tag "fnord theme colour" :default 0)
-                 (string :tag "colour code")
-                 (symbol :tag "unspecified" :value unspecified))
+
+(defun fnord--defface-spec (face-spec)
+  "Generate a complete face spec from FACE-SPEC for use with `defface'.
+Substitute integers for fnord theme colours, add class and correct structure."
+  (let ((spec (fnord--subst-colours face-spec)))
+    `((,fnord--class . ,spec))))
+
+
+(defface fnord-region-default (fnord--defface-spec '(:foreground unspecified :background 2 :distant-foreground 4))
+  "Default fnord face for region highlight.")
+(defface fnord-region-frost (fnord--defface-spec '(:background 8 :foreground 0 :distant-foreground 0))
+  "Fnord face for frost region highlighting.")
+(defface fnord-region-snowstorm (fnord--defface-spec '(:background 4 :foreground 0 :distant-foreground 0))
+  "Fnord face for snowstorm region highlighting.")
+
+
+(defcustom fnord-region-face 'fnord-region-default
+  "Fnord face spec for highlighting the region.
+
+You can choose from predefined options, or specify a custom option.
+If you use a sexp, you can use integers 1-15 for colour values and
+they will be converted to fnord theme colours."
+  :type `(choice (face :tag "fnord default" :value fnord-region-default)
+                 (face :tag "frost" :value fnord-region-frost)
+                 (face :tag "snowstorm" :value fnord-region-snowstorm)
+                 (face :tag "custom face"))
   :group 'fnord-theme
+  :link '(url-link "https://www.nordtheme.com/docs/ports/emacs/configuration")
   :set (lambda (symbol value)
-         (fnord--update-custom-face-colour symbol value 'region :foreground)))
+         (fnord--update-custom-face-attr symbol value 'region :inherit)))
 
 
-(defcustom fnord-region-distant-foreground 4
-  "Distant-foreground color for the region.
-Used when contrast between foreground and background is low.
-If set as an int: use a fnord theme colour.
-Alternatively, use a string to choose your own colour code. Note that the string
-has to be a valid colour code like \"#A01A02\""
-  :type '(choice (integer :tag "fnord theme colour" :default 0)
-                 (string :tag "colour code")
-                 (symbol :tag "unspecified" :value unspecified))
+(defcustom fnord-secondary-selection-face 'fnord-region-frost
+  "Fnord face spec for highlighting the secondary selection."
+  :type `(choice (face :tag "frost" :value fnord-region-frost)
+                 (face :tag "fnord default region" :value fnord-region-default)
+                 (face :tag "snowstorm" :value fnord-region-snowstorm)
+                 (face :tag "custom face"))
   :group 'fnord-theme
+  :link '(info-link "(emacs)Top > Killing > Cut and Paste > Secondary Selection")
   :set (lambda (symbol value)
-         (fnord--update-custom-face-colour symbol value 'region :distant-foreground)))
-
-
-(defcustom fnord-region-background 2
-  "Background color for the region.
-If set as an int: use a fnord theme colour.
-Alternatively, use a string to choose your own colour code. Note that the string
-has to be a valid colour code like \"#A01A02\""
-  :type '(choice (integer :tag "fnord theme colour" :default 0)
-                 (string :tag "colour code")
-                 (symbol :tag "unspecified" :value unspecified))
-  :group 'fnord-theme
-  :set (lambda (symbol value)
-         (fnord--update-custom-face-colour symbol value 'region :background)))
+         (fnord--update-custom-face-attr symbol value 'secondary-selection :inherit)))
 
 
 

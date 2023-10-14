@@ -19,11 +19,12 @@
 
 (defgroup fnord-theme nil
   "Fnord theme customizations.
-The theme has to be reloaded after changing anything in this group."
+Most settings in this group are applied immediately - no need to reload the theme."
   :group 'faces)
 
 (defgroup fnord-theme-colours nil
-  "Colour values for the fnord theme."
+  "Colour values for the fnord theme.
+These settings are NOT applied immediately - you will need to reload the theme."
   :group 'fnord-theme
   :link '(url-link "https://www.nordtheme.com/docs/colors-and-palettes"))
 

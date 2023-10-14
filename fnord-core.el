@@ -60,15 +60,24 @@
     (edmacro-label :foreground 7 :weight normal)
     
     ;; highlighting
-    (region :foreground ,fnord-region-foreground
-            :background ,fnord-region-background
-            :distant-foreground ,fnord-region-distant-foreground)
+    (region :inherit ,fnord-region-face)
     (highlight :foreground 8 :background 3)
-    (hl-line :background 3 :distant-foreground 4)
+    (hl-line :background 1 :distant-foreground 4)
     (hl-todo :foreground 11 :weight bold)
-    (secondary-selection :inherit region)
-        
-     ;; windows and frames
+    (secondary-selection :inherit ,fnord-secondary-selection-face)
+
+    ;; hi-lock mode
+    (hi-aquamarine :background 7 :distant-foreground 0)
+    (hi-blue :background 8 :distant-foreground 0)
+    (hi-blue-b :foreground 8 :weight bold)
+    (hi-green :background 14 :distant-foreground 0)
+    (hi-green-b :foreground 14 :distant-foreground 0)
+    (hi-pink :background 11 :foreground 4)
+    (hi-red-b :foreground 11 :weight bold)
+    (hi-salmon :background 12 :distant-foreground 0)
+    (hi-yellow :background 13 :distant-foreground 0)
+    
+    ;; windows and frames
     (border :foreground 4)
     (fringe :foreground 4 :background 0)
     (header-line :foreground 4 :background 2)
@@ -93,6 +102,7 @@
     (confusingly-reordered :underline (:style wave :color 11))
 
     (elisp-shorthand-font-lock-face :foreground 15)
+    
     ;; easypg
     (epa-validity-high :foreground 7 :weight normal)
     (epa-validity-medium :foreground 8 :weight normal :slant normal)
@@ -124,6 +134,7 @@
     
     (buffer-menu-buffer :foreground 7 :weight bold)
     (ibuffer-locked-buffer :foreground 11)
+    (file-name-shadow :inherit shadow)
     
     (button :background 0 :foreground 8 :box (:line-width 1 :color 9 :style released-button))
     
@@ -153,8 +164,14 @@
     (custom-state :foreground 14)
     (custom-themed :foreground 8 :background 2)
     (custom-visibility :foreground 9)
+
+    (dired-broken-symlink :foreground 11 :background 2)
+    (dired-mark :foreground 7)
+    (dired-perm-write :foreground 11)
+    (dired-symlink :foreground 14)
+    (dired-special :foreground 15)
+    (dired-directory :foreground 8)
     
-    (file-name-shadow :inherit shadow)
     (help-argument-name :foreground 8)
     (help-for-help-header :foreground 7 :height 'unspecified)
     (help-key-binding :inherit button :background 0)

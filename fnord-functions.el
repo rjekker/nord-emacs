@@ -63,6 +63,12 @@ Those will be substituted using `fnord--get-colour'."
     `(,face ((,fnord--class . ,(fnord--subst-colours spec))))))
 
 
+(defun fnord--set-face (face spec)
+  "Set FACE to SPEC.
+SPEC can be a fnord spec, with integers for colours."
+  (apply #'face-spec-set (fnord--face (cons face spec))))
+
+  
 (defun fnord--test-face-spec-at-point ()
   "Utility for testing fnord face specs.
 Run this with point before a face spec like \"(default :foreground 5)\",
@@ -80,6 +86,7 @@ If VALUE is nil, it will be set to `unspecified'."
                       (pcase value
                         ((pred null) 'unspecified)
                         (_ value))))
+
 
 (defun fnord--change-face-colour (face attr value)
   "Set a single colour attribute ATTR of FACE to VALUE.
