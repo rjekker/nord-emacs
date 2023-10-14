@@ -22,7 +22,9 @@
 
 ;; TODO customize raised buttons
 (setopt custom-raised-buttons t)
+(setopt help-clean-buttons t)
 (add-hook 'calendar-today-visible-hook 'calendar-mark-today)
+
 
 (setq holiday-other-holidays '((holiday-fixed 10 20 "Bastille Day")))
 
@@ -36,17 +38,26 @@
     
     (default :foreground 4 :background 0)
     (error :foreground 11 :weight bold)
+;    (next-error :inherit error)
     (escape-glyph :foreground 12)
+    (homoglyph :foreground 15)
+    (nobreak-hyphen :foreground 15)
+    (nobreak-space :foreground 3)
     (italic :slant italic)
     (shadow :foreground 3)
     (underline :underline t)
     (warning :foreground 13 :weight bold)
     (success :foreground 14)
-
+    (textsec-suspicious :background 11 :foreground 6)
+    (tooltip :background 3 :foreground 4)
+    
     (link :underline t :foreground 8)
-    (link-visited :underline t)
+    (link-visited :underline t :foreground 10)
 
     (bookmark-face :foreground 12 :distant-foreground 12)
+
+    ;; edit keyboard macro
+    (edmacro-label :foreground 7 :weight normal)
     
     ;; highlighting
     (region :foreground ,fnord-region-foreground
@@ -54,8 +65,10 @@
             :distant-foreground ,fnord-region-distant-foreground)
     (highlight :foreground 8 :background 3)
     (hl-line :background 3 :distant-foreground 4)
-    
-    ;; windows and frames
+    (hl-todo :foreground 11 :weight bold)
+    (secondary-selection :inherit region)
+        
+     ;; windows and frames
     (border :foreground 4)
     (fringe :foreground 4 :background 0)
     (header-line :foreground 4 :background 2)
@@ -65,16 +78,31 @@
     (calendar-weekend-header :foreground 15)
     (calendar-today :foreground 14 :weight bold)
     (diary :foreground 7)
+    (diary-anniversary :foreground 13)
     (holiday :foreground 10 :background 0)
     
     (completions-annotations :foreground 9)
     (completions-common-part :foreground 8 :weight bold)
     (completions-first-difference :foreground 11)
+    (completions-group-title :foreground 7)
+    (completions-group-title :foreground 7)
     
     (compilation-mode-line-exit :foreground 14)
     (compilation-mode-line-fail :foreground 11)
 
     (confusingly-reordered :underline (:style wave :color 11))
+
+    (elisp-shorthand-font-lock-face :foreground 15)
+    ;; easypg
+    (epa-validity-high :foreground 7 :weight normal)
+    (epa-validity-medium :foreground 8 :weight normal :slant normal)
+    (epa-validity-low :foreground 13 :weight normal)
+    (epa-validity-disabled :foreground 11 :background 2)
+    (epa-mark :foreground 13)
+    (epa-string :inherit font-lock-string-face)
+    (epa-field-body :foreground 8)
+    (epa-field-name :foreground 7)
+    
     ;; font-lock
     (font-lock-builtin-face :foreground 9)
     (font-lock-comment-face :foreground 16)
@@ -95,8 +123,10 @@
     (font-lock-warning-face :foreground 13)
     
     (buffer-menu-buffer :foreground 7 :weight bold)
-
+    (ibuffer-locked-buffer :foreground 11)
+    
     (button :background 0 :foreground 8 :box (:line-width 1 :color 9 :style released-button))
+    
     (widget-button-pressed :background 3 :foreground 7 :box (:line-width 1 :color 9 :style pressed-button))
     (widget-documentation :foreground 4)
     (widget-inactive :foreground 3)
@@ -126,7 +156,10 @@
     
     (file-name-shadow :inherit shadow)
     (help-argument-name :foreground 8)
-
+    (help-for-help-header :foreground 7 :height 'unspecified)
+    (help-key-binding :inherit button :background 0)
+    (shortdoc-heading :inherit info-menu-header)
+    
     ;; info-mode
     (info-title-4 :foreground 7 :weight bold :inherit variable-pitch)
     (info-title-1 :height 1.2 :inherit info-title-2)
@@ -137,11 +170,13 @@
     (info-menu-star :foreground 15)
 
     ;; search/replace
-    (isearch :foreground 0 :background 8)
+    (isearch :foreground 0 :background 7)
+    (isearch-group-1 :foreground 0 :background 12)
+    (isearch-group-2 :foreground 0 :background 13)
     (isearch-fail :foreground 11)
     (match :inherit isearch)
     (query-replace :inherit isearch)
-    (lazy-highlight :inherit isearch :foreground 6)
+    (lazy-highlight :foreground 4 :background 10)
     
 
     (linum :foreground 3 :background 0)
@@ -154,9 +189,6 @@
     (mode-line-buffer-id :weight bold)
     (mode-line-highlight :inherit highlight)
     (mode-line-inactive :foreground 4 :background 1)
-    (next-error :inherit error)
-    (nobreak-space :foreground 3)
-
     ;; TODO customize:
     ;; org block and table backgrounds
     ;; org header heights (zie info headers) - ook gebruiken voor outline
@@ -222,7 +254,7 @@
     (outline-6 :foreground 9 :inherit outline-1)
     (outline-7 :foreground 7 :inherit outline-1)
     (outline-8 :foreground 8 :inherit outline-1)
-    
+   
     (package-description :foreground 4)
     (package-help-section-name :foreground 8 :weight bold)
     (package-name :foreground 8)
@@ -236,13 +268,12 @@
     (package-status-new :foreground 14)
     (package-status-incompat :foreground 11)
     (package-status-installed :foreground 7 :weight bold)
-    (package-status-unsigned :underline 13)
+    (package-status-unsigned :foreground 13)
 
     (scroll-bar :background 3)
-    (secondary-selection :background 2)
-
-    (show-paren-match :foreground 0 :background 8)
-    (show-paren-mismatch :background 11)
+    
+    (show-paren-match :foreground 4 :background 10)
+    (show-paren-mismatch :foreground 4 :background 11)
     (term :foreground 4 :background 0)
     (term-color-black :foreground 1 :background 1)
     (term-color-white :foreground 5 :background 5)
@@ -267,10 +298,14 @@
     (tty-menu-disabled-face :foreground 1)
     (tty-menu-enabled-face :background 2 :foreground 4)
     (tty-menu-selected-face :foreground 8 :underline t)
+
+    ;; TODO 
     (undo-tree-visualizer-current-face :foreground 8)
     (undo-tree-visualizer-default-face :foreground 4)
     (undo-tree-visualizer-unmodified-face :foreground 4)
     (undo-tree-visualizer-register-face :foreground 9)
+
+    
     (vc-conflict-state :foreground 12)
     (vc-edited-state :foreground 13)
     (vc-locally-added-state :underline 14)
@@ -281,7 +316,11 @@
     (vc-state-base :foreground 4)
     (vc-up-to-date-state :foreground 8)
     (vertical-border :foreground 2)
+
+    ;; TODO
     (which-func :foreground 8)
+
+    ;; TODO 
     (whitespace-big-indent :foreground 3 :background 0)
     (whitespace-empty :foreground 3 :background 0)
     (whitespace-hspace :foreground 3 :background 0)
