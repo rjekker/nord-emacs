@@ -1,10 +1,11 @@
 ;;; fnord-core.el --- Core faces for the fnord theme
 
-;; Copyright for portions of project fnord-theme are held by: Sven Greb
-;; <development@svengreb.de> (https://www.svengreb.de) 2016-2023, as part
-;; of project nordtheme/emacs (https://github.com/nordtheme/emacs). All
-;; other copyright for project fnord-theme are held by Reindert-Jan Ekker
-;; <info@rjekker.nl>, 2023-present.
+;; Copyright for portions of project fnord-theme are held by:
+;; Sven Greb <development@svengreb.de> (https://www.svengreb.de) 2016-2023,
+;; as part of project nordtheme/emacs (https://github.com/nordtheme/emacs).
+
+;; All other copyright for project fnord-theme are held by:
+;; Reindert-Jan Ekker <info@rjekker.nl>, 2023-present.
 
 ;; Title: Fnord Theme
 ;; Project: fnord-theme
@@ -25,47 +26,60 @@
 (setopt help-clean-buttons t)
 (add-hook 'calendar-today-visible-hook 'calendar-mark-today)
 
-
-(setq holiday-other-holidays '((holiday-fixed 10 20 "Bastille Day")))
-
 (defvar fnord--faces
   `(;; add a dummy face  so we can detect whether theme was loaded
     (fnord--loaded-dummy :weight bold)
 
     (bold :weight bold)
     (bold-italic :weight bold :slant italic)
+    (bookmark-face :foreground 12 :distant-foreground 12)
     (cursor :background 4)
-    
     (default :foreground 4 :background 0)
     (error :foreground 11 :weight bold)
-;    (next-error :inherit error)
+    
     (escape-glyph :foreground 12)
     (homoglyph :foreground 15)
     (nobreak-hyphen :foreground 15)
     (nobreak-space :foreground 3)
     (italic :slant italic)
-    (shadow :foreground 3)
+    (link :underline t :foreground 8)
+    (link-visited :underline t :foreground 10)
     (underline :underline t)
+    (shadow :foreground 3)
     (warning :foreground 13 :weight bold)
     (success :foreground 14)
     (textsec-suspicious :background 11 :foreground 6)
-    (tooltip :background 3 :foreground 4)
-    
-    (link :underline t :foreground 8)
-    (link-visited :underline t :foreground 10)
-
-    (bookmark-face :foreground 12 :distant-foreground 12)
+    (tooltip :background 3 :foreground 4)    
 
     ;; edit keyboard macro
     (edmacro-label :foreground 7 :weight normal)
     
-    ;; highlighting
-    (region :inherit ,fnord-region-face)
+    ;; highlighting and selections
     (highlight :foreground 8 :background 3)
     (hl-line :background 1 :distant-foreground 4)
     (hl-todo :foreground 11 :weight bold)
-    (secondary-selection :inherit ,fnord-secondary-selection-face)
+    (next-error :inherit highlight)
+    (trailing-whitespace :background 10)   
 
+    ;; current match
+    (match :foreground 0 :background 8)
+    ;; related matches
+    (lazy-highlight :foreground 4 :background 10)
+
+    ;; region
+    (region :inherit ,fnord-region-face)
+    (secondary-selection :inherit ,fnord-secondary-selection-face)
+    
+    ;; search/replace
+    (isearch :inherit match)
+    (isearch-group-1 :foreground 0 :background 12)
+    (isearch-group-2 :foreground 0 :background 13)
+    (isearch-fail :foreground 11)
+    (query-replace :inherit match)
+
+    (show-paren-match :inherit ,fnord-paren-match-face)
+    (show-paren-mismatch :foreground 4 :background 11)
+    
     ;; hi-lock mode
     (hi-aquamarine :background 7 :distant-foreground 0)
     (hi-blue :background 8 :distant-foreground 0)
@@ -81,6 +95,19 @@
     (border :foreground 4)
     (fringe :foreground 4 :background 0)
     (header-line :foreground 4 :background 2)
+    (minibuffer-prompt :foreground 8 :weight bold)
+    (mm-command-output :foreground 8)
+    (mode-line :foreground 8 :background 3)
+    (mode-line-buffer-id :weight bold)
+    (mode-line-highlight :inherit highlight)
+    (mode-line-inactive :foreground 4 :background 1)
+
+    (scroll-bar :background 3)
+    (tool-bar :foreground 4 :background 3)
+    (tooltip :foreground 0 :background 4)
+    (window-divider :background 3)
+    (window-divider-first-pixel :background 3)
+    (window-divider-last-pixel :background 3)
 
     (calendar-month-header :foreground 7)
     (calendar-weekday-header :foreground 8)
@@ -174,7 +201,7 @@
     (dired-directory :foreground 8)
     
     (help-argument-name :foreground 8)
-    (help-for-help-header :foreground 7 :height 'unspecified)
+    (help-for-help-header :foreground 7 :height 1)
     (help-key-binding :inherit button :background 0)
     (shortdoc-heading :inherit info-menu-header)
     
@@ -187,26 +214,11 @@
     (Info-quoted :foreground 6)
     (info-menu-star :foreground 15)
 
-    ;; search/replace
-    (isearch :foreground 0 :background 7)
-    (isearch-group-1 :foreground 0 :background 12)
-    (isearch-group-2 :foreground 0 :background 13)
-    (isearch-fail :foreground 11)
-    (match :inherit isearch)
-    (query-replace :inherit isearch)
-    (lazy-highlight :foreground 4 :background 10)
-    
-
+    ;; linum deprecated in emacs 29
     (linum :foreground 3 :background 0)
     (linum-relative-current-face :foreground 3 :background 0)
     (line-number-current-line :foreground 6)
     
-    (minibuffer-prompt :foreground 8 :weight bold)
-    (mm-command-output :foreground 8)
-    (mode-line :foreground 8 :background 3)
-    (mode-line-buffer-id :weight bold)
-    (mode-line-highlight :inherit highlight)
-    (mode-line-inactive :foreground 4 :background 1)
     ;; TODO customize:
     ;; org block and table backgrounds
     ;; org header heights (zie info headers) - ook gebruiken voor outline
@@ -222,7 +234,7 @@
     (org-agenda-structure :foreground 7 :weight bold)
     (org-agenda-date :foreground 8 :underline nil)
     (org-agenda-date-weekend :foreground 9)
-    (org-agenda-date-today :foreground 8 :weight bold)    
+    (org-agenda-date-today :foreground 8 :weight bold)
     (org-agenda-done :foreground 14)
     (org-agenda-dimmed-todo-face :background 13)
     (org-block :background 1)
@@ -287,11 +299,7 @@
     (package-status-incompat :foreground 11)
     (package-status-installed :foreground 7 :weight bold)
     (package-status-unsigned :foreground 13)
-
-    (scroll-bar :background 3)
     
-    (show-paren-match :foreground 4 :background 10)
-    (show-paren-mismatch :foreground 4 :background 11)
     (term :foreground 4 :background 0)
     (term-color-black :foreground 1 :background 1)
     (term-color-white :foreground 5 :background 5)
@@ -310,14 +318,11 @@
     (ansi-color-green :foreground 14 :background 14)
     (ansi-color-magenta :foreground 15 :background 15)
     
-    (tool-bar :foreground 4 :background 3)
-    (tooltip :foreground 0 :background 4)
-    (trailing-whitespace :foreground 3)
     (tty-menu-disabled-face :foreground 1)
     (tty-menu-enabled-face :background 2 :foreground 4)
     (tty-menu-selected-face :foreground 8 :underline t)
 
-    ;; TODO 
+    ;; TODO
     (undo-tree-visualizer-current-face :foreground 8)
     (undo-tree-visualizer-default-face :foreground 4)
     (undo-tree-visualizer-unmodified-face :foreground 4)
@@ -338,26 +343,30 @@
     ;; TODO
     (which-func :foreground 8)
 
-    ;; TODO 
-    (whitespace-big-indent :foreground 3 :background 0)
-    (whitespace-empty :foreground 3 :background 0)
-    (whitespace-hspace :foreground 3 :background 0)
-    (whitespace-indentation :foreground 3 :background 0)
-    (whitespace-line :background 0)
-    (whitespace-newline :foreground 3 :background 0)
-    (whitespace-space :foreground 3 :background 0)
-    (whitespace-space-after-tab :foreground 3 :background 0)
-    (whitespace-space-before-tab :foreground 3 :background 0)
-    (whitespace-tab :foreground 3 :background 0)
-    (whitespace-trailing :inherit trailing-whitespace :background 15)
-
-    (window-divider :background 3)
-    (window-divider-first-pixel :background 3)
-    (window-divider-last-pixel :background 3)
+    ;; TODO
+    (whitespace-big-indent :inherit trailing-whitespace)
+    (whitespace-empty :inherit trailing-whitespace)
+    (whitespace-hspace :inherit trailing-whitespace)
+    (whitespace-indentation :inherit trailing-whitespace)
+    (whitespace-line :inherit trailing-whitespace)
+    (whitespace-newline :inherit trailing-whitespace)
+    (whitespace-space :inherit trailing-whitespace)
+    (whitespace-space-after-tab :inherit trailing-whitespace)
+    (whitespace-space-before-tab :inherit trailing-whitespace)
+    (whitespace-tab :inherit trailing-whitespace)
+    (whitespace-trailing :inherit trailing-whitespace)
 
     (tab-bar :inherit mode-line-inactive)
     (tab-bar-tab :inherit mode-line-highlight)
-    (tab-bar-tab-inactive :inherit tab-bar))
+    (tab-bar-tab-inactive :inherit tab-bar)
+
+    ;; todo not in core?
+    ;; imenu-list
+    (imenu-list-entry-face-0 :foreground 7)
+    (imenu-list-entry-face-1 :foreground 9)
+    (imenu-list-entry-face-2 :foreground 10)
+    (imenu-list-entry-face-3 :foreground 8)
+    )
   
   "The list of faces defined by the fnord theme.
 Foreground and background colours can be ints, in which

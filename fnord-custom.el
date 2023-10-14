@@ -61,6 +61,8 @@ Substitute integers for fnord theme colours, add class and correct structure."
 
 (defface fnord-region-default (fnord--defface-spec '(:foreground unspecified :background 2 :distant-foreground 4))
   "Default fnord face for region highlight.")
+(defface fnord-secondary-selection-default (fnord--defface-spec '(:foreground unspecified :background 3 :distant-foreground 4))
+  "Default fnord face for secondary selection highlight.")
 (defface fnord-region-frost (fnord--defface-spec '(:background 8 :foreground 0 :distant-foreground 0))
   "Fnord face for frost region highlighting.")
 (defface fnord-region-snowstorm (fnord--defface-spec '(:background 4 :foreground 0 :distant-foreground 0))
@@ -74,6 +76,7 @@ You can choose from predefined options, or specify a custom option.
 If you use a sexp, you can use integers 1-15 for colour values and
 they will be converted to fnord theme colours."
   :type `(choice (face :tag "fnord default" :value fnord-region-default)
+                 (face :tag "fnord default secondary selection" :value fnord-secondary-selection-default)
                  (face :tag "frost" :value fnord-region-frost)
                  (face :tag "snowstorm" :value fnord-region-snowstorm)
                  (face :tag "custom face"))
@@ -83,18 +86,37 @@ they will be converted to fnord theme colours."
          (fnord--update-custom-face-attr symbol value 'region :inherit)))
 
 
-(defcustom fnord-secondary-selection-face 'fnord-region-frost
+(defcustom fnord-secondary-selection-face 'fnord-secondary-selection-default
   "Fnord face spec for highlighting the secondary selection."
-  :type `(choice (face :tag "frost" :value fnord-region-frost)
+  :type `(choice (face :tag "fnord default secondary selection" :value fnord-secondary-selection-default)
                  (face :tag "fnord default region" :value fnord-region-default)
+                 (face :tag "frost" :value fnord-region-frost)
                  (face :tag "snowstorm" :value fnord-region-snowstorm)
                  (face :tag "custom face"))
   :group 'fnord-theme
-  :link '(info-link "(emacs)Top > Killing > Cut and Paste > Secondary Selection")
+  :link '(info-link "(emacs)Secondary Selection")
   :set (lambda (symbol value)
          (fnord--update-custom-face-attr symbol value 'secondary-selection :inherit)))
 
 
+(defface fnord-paren-match-nord (fnord--defface-spec '(:background 3 :foreground 8))
+  "Paren match face from the original Nord theme.")
+(defface fnord-paren-match-brighter (fnord--defface-spec '(:background 10 :foreground 4))
+  "Brighter default for paren match face.")
+
+
+(defcustom fnord-paren-match-face 'fnord-paren-match-brighter
+  "Fnord face spec for highlighting matching parens.
+
+By default, fnord-theme uses a brighter face here to make it easier to
+find a matching paren across a large piece of code."
+  :type `(choice (face :tag "fnord default" :value fnord-paren-match-brighter)
+                 (face :tag "nord" :value fnord-paren-match-nord)
+                 (face :tag "custom face"))
+  :group 'fnord-theme
+  :link '(info-link "(emacs)Matching Parentheses")
+  :set (lambda (symbol value)
+         (fnord--update-custom-face-attr symbol value 'show-paren-match :inherit)))
 
 (provide 'fnord-custom)
 
