@@ -165,7 +165,8 @@
     (custom-themed :foreground 8 :background 2)
     (custom-visibility :foreground 9)
 
-    (dired-broken-symlink :foreground 11 :background 2)
+    (dired-broken-symlink :foreground 11)
+    (dired-ignored :inherit font-lock-comment-face)
     (dired-mark :foreground 7)
     (dired-perm-write :foreground 11)
     (dired-symlink :foreground 14)
