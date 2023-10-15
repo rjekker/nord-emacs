@@ -339,12 +339,19 @@
     (undo-tree-visualizer-unmodified-face :foreground 4)
     (undo-tree-visualizer-register-face :foreground 9)
 
+    (diff-hl-change :foreground 13 :background 13)
+    (diff-hl-insert :foreground 14 :background 14)
+    (diff-hl-delete :foreground 11 :background 11)
     
+    
+    ;; TODO
     (vc-conflict-state :foreground 12)
     (vc-edited-state :foreground 13)
     (vc-locally-added-state :underline 14)
     (vc-locked-state :foreground 10)
     (vc-missing-state :foreground 11)
+    
+    (vcs-missing-state :foreground 11)
     (vc-needs-update-state :foreground 12)
     (vc-removed-state :foreground 11)
     (vc-state-base :foreground 4)
