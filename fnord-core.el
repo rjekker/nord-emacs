@@ -400,6 +400,13 @@
     (anzu-match-2 :inherit isearch-group-2)
     (anzu-match-3 :background 15)
 
+    ;; > Flycheck
+    (flycheck-error :underline (:style wave :color 11))
+    (flycheck-fringe-error :foreground 11 :weight bold)
+    (flycheck-fringe-info :foreground 8 :weight bold)
+    (flycheck-fringe-warning :foreground 13 :weight bold)
+    (flycheck-info :underline (:style wave :color 8))
+    (flycheck-warning :underline (:style wave :color 13))
 
     ;; Rainbow Delimeters
     ;; trying to get some distance between the colours
