@@ -405,6 +405,15 @@
     (rainbow-delimiters-depth-7-face :foreground 7)
     (rainbow-delimiters-depth-8-face :foreground 9)
     (rainbow-delimiters-base-error-face :inherit show-paren-mismatch)
+
+    (company-tooltip :background 2 :foreground 4)
+    (company-tooltip-selection :inherit highlight)
+    (company-tooltip-search :inherit match)
+    (company-tooltip-annotation :foreground 4)
+    (company-tooltip-common :foreground 14)
+    (company-tooltip-quick-access :foreground 6)
+    (company-tooltip-scrollbar-thumb :background 3)
+    (company-tooltip-scrollbar-track :background 1)
     )
   
   "The list of faces defined by the fnord theme.
