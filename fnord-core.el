@@ -408,7 +408,7 @@
     (flycheck-info :underline (:style wave :color 8))
     (flycheck-warning :underline (:style wave :color 13))
 
-    ;; Rainbow Delimeters
+    ;; Rainbow Delimiters
     ;; trying to get some distance between the colours
     (rainbow-delimiters-depth-1-face :foreground 4)
     (rainbow-delimiters-depth-2-face :foreground 8)
@@ -419,7 +419,7 @@
     (rainbow-delimiters-depth-7-face :foreground 7)
     (rainbow-delimiters-depth-8-face :foreground 9)
     (rainbow-delimiters-base-error-face :inherit show-paren-mismatch)
-
+    
     (company-tooltip :background 2 :foreground 4)
     (company-tooltip-selection :inherit highlight)
     (company-tooltip-search :inherit match)
@@ -428,6 +428,14 @@
     (company-tooltip-quick-access :foreground 6)
     (company-tooltip-scrollbar-thumb :background 3)
     (company-tooltip-scrollbar-track :background 1)
+
+    (which-key-key-face :foreground 7)
+    (which-key-command-description-face :foreground 9)
+    (which-key-highlighted-command-face :foreground 6)
+    (which-key-group-description-face :foreground 14)
+    (which-key-special-key-face :foreground 15)
+    (which-key-note-face :foreground 10)
+    (which-key-local-map-description-face :foreground 12)
     )
   
   "The list of faces defined by the fnord theme.

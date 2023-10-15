@@ -236,17 +236,7 @@
     ;;             `(vc-up-to-date-state :foreground 8)
     ;;             `(vertical-border :foreground 2)
     ;;             `(which-func :foreground 8)
-    ;;             `(whitespace-big-indent :foreground 3 :background 0)
-    ;;             `(whitespace-empty :foreground 3 :background 0)
-    ;;             `(whitespace-hspace :foreground 3 :background 0)
-    ;;             `(whitespace-indentation :foreground 3 :background 0)
-    ;;             `(whitespace-line :background 0)
-    ;;             `(whitespace-newline :foreground 3 :background 0)
-    ;;             `(whitespace-space :foreground 3 :background 0)
-    ;;             `(whitespace-space-after-tab :foreground 3 :background 0)
-    ;;             `(whitespace-space-before-tab :foreground 3 :background 0)
-    ;;             `(whitespace-tab :foreground 3 :background 0)
-    ;;             `(whitespace-trailing :inherit 'trailing-whitespace :background 15)  
+
     ;;             `(widget-button-pressed :foreground 9 :background 1)
     ;;             `(widget-documentation :foreground 4)
     ;;             `(widget-field :background 2 :foreground 4)
@@ -256,11 +246,7 @@
     ;;             `(window-divider-last-pixel :background 3)
 
     ;;            
- `(tab-bar ((t (:inherit mode-line-inactive))))
-    ;;             `(tab-bar-tab ((t (:inherit mode-line-highlight))))
-    ;;             `(tab-bar-tab-inactive ((t (:inherit tab-bar)))) '(tab-line ((t nil)))
-
-    ;; ;;;; +-----------------+
+ ;; ;;;; +-----------------+
     ;; ;;;; + Package Support +
     ;; ;;;; +-----------------+
     ;;             ;; +--- Syntax ---+
@@ -358,17 +344,6 @@
     ;;             `(markdown-reference-face :inherit 'markdown-link-face)
     ;;             `(markdown-url-face :foreground 4 :underline t)
 
-    ;;             ;; > Rainbow Delimeters
-    ;;             `(rainbow-delimiters-depth-1-face :foreground 7)
-    ;;             `(rainbow-delimiters-depth-2-face :foreground 8)
-    ;;             `(rainbow-delimiters-depth-3-face :foreground 9)
-    ;;             `(rainbow-delimiters-depth-4-face :foreground 10)
-    ;;             `(rainbow-delimiters-depth-5-face :foreground 12)
-    ;;             `(rainbow-delimiters-depth-6-face :foreground 13)
-    ;;             `(rainbow-delimiters-depth-7-face :foreground 14)
-    ;;             `(rainbow-delimiters-depth-8-face :foreground 15)
-    ;;             `(rainbow-delimiters-unmatched-face :foreground 11)
-
     ;;             ;; > Web Mode
     ;;             `(web-mode-attr-tag-custom-face :foreground fnord-attribute)
     ;;             `(web-mode-builtin-face :foreground fnord-keyword)
@@ -404,30 +379,11 @@
 
     ;;             ;; +--- UI ---+
     ;;             ;; > Anzu
-    ;;             `(anzu-mode-line :foreground 8)
-    ;;             `(anzu-mode-line-no-match :foreground 11)
-
     ;;             ;; > Avy
     ;;             `(avy-lead-face :background 11 :foreground 5)
     ;;             `(avy-lead-face-0 :background 10 :foreground 5)
     ;;             `(avy-lead-face-1 :background 3 :foreground 5)
     ;;             `(avy-lead-face-2 :background 15 :foreground 5)
-
-    ;;             ;; > Company
-    ;;             `(company-echo-common :foreground 0 :background 4)
-    ;;             `(company-preview :foreground 4 :background 10)
-    ;;             `(company-preview-common :foreground 0 :background 8)
-    ;;             `(company-preview-search :foreground 0 :background 8)
-    ;;             `(company-scrollbar-bg :foreground 1 :background 1)
-    ;;             `(company-scrollbar-fg :foreground 2 :background 2)
-    ;;             `(company-template-field :foreground 0 :background 7)
-    ;;             `(company-tooltip :foreground 4 :background 2)
-    ;;             `(company-tooltip-annotation :foreground 12)
-    ;;             `(company-tooltip-annotation-selection :foreground 12 :weight 'bold)
-    ;;             `(company-tooltip-common :foreground 8)
-    ;;             `(company-tooltip-common-selection :foreground 8 :background 3)
-    ;;             `(company-tooltip-mouse :inherit 'highlight)
-    ;;             `(company-tooltip-selection :background 3 :weight 'bold)
 
     ;;             ;; > diff-hl
     ;;             `(diff-hl-change :background 13)
