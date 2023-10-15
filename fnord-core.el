@@ -27,7 +27,7 @@
 (add-hook 'calendar-today-visible-hook 'calendar-mark-today)
 
 (defvar fnord--faces
-  `(;; add a dummy face  so we can detect whether theme was loaded
+  `(;; add a dummy face so we can detect whether theme was loaded
     (fnord--loaded-dummy :weight bold)
 
     (bold :weight bold)
@@ -45,7 +45,7 @@
     (link :underline t :foreground 8)
     (link-visited :underline t :foreground 10)
     (underline :underline t)
-    (shadow :foreground 3)
+    (shadow :foreground 4)
     (warning :foreground 13 :weight bold)
     (success :foreground 14)
     (textsec-suspicious :background 11 :foreground 6)
@@ -74,7 +74,7 @@
     (isearch :inherit match)
     (isearch-group-1 :foreground 0 :background 12)
     (isearch-group-2 :foreground 0 :background 13)
-    (isearch-fail :foreground 11)
+    (isearch-fail :foreground 12)
     (query-replace :inherit match)
 
     (show-paren-match :inherit ,fnord-paren-match-face)
@@ -109,6 +109,10 @@
     (window-divider-first-pixel :background 3)
     (window-divider-last-pixel :background 3)
 
+    (tty-menu-disabled-face :foreground 1)
+    (tty-menu-enabled-face :background 2 :foreground 4)
+    (tty-menu-selected-face :foreground 8 :underline t)
+
     (calendar-month-header :foreground 7)
     (calendar-weekday-header :foreground 8)
     (calendar-weekend-header :foreground 15)
@@ -119,8 +123,7 @@
     
     (completions-annotations :foreground 9)
     (completions-common-part :foreground 8 :weight bold)
-    (completions-first-difference :foreground 11)
-    (completions-group-title :foreground 7)
+    (completions-first-difference :inherit isearch-fail)
     (completions-group-title :foreground 7)
     
     (compilation-mode-line-exit :foreground 14)
@@ -142,10 +145,10 @@
     
     ;; font-lock
     (font-lock-builtin-face :foreground 9)
-    (font-lock-comment-face :foreground 16)
-    (font-lock-comment-delimiter-face :foreground 16)
+    (font-lock-comment-face :foreground ,fnord-comment-colour)
+    (font-lock-comment-delimiter-face :inherit font-lock-comment-face)
     (font-lock-constant-face :foreground 9)
-    (font-lock-doc-face :foreground 16)
+    (font-lock-doc-face :inherit font-lock-comment-face)
     (font-lock-function-name-face :foreground 8)
     (font-lock-keyword-face :foreground 9)
     (font-lock-negation-char-face :foreground 9)
@@ -162,9 +165,11 @@
     (buffer-menu-buffer :foreground 7 :weight bold)
     (ibuffer-locked-buffer :foreground 11)
     (file-name-shadow :inherit shadow)
-    
+
+    ;; TODO
+    ;; in help: fix default-button mouse-face
+    ;; NB also check buttons in linux
     (button :background 0 :foreground 8 :box (:line-width 1 :color 9 :style released-button))
-    
     (widget-button-pressed :background 3 :foreground 7 :box (:line-width 1 :color 9 :style pressed-button))
     (widget-documentation :foreground 4)
     (widget-inactive :foreground 3)
@@ -177,7 +182,7 @@
     (custom-button-pressed-unraised  :background 3 :foreground 7 :box (:line-width 1 :color 9 :style flat-button))
     (custom-button-unraised :background 0 :foreground 8 :box (:line-width 1 :color 9 :style flat-button))
     (custom-changed :foreground 13)
-    (custom-comment :foreground 16)
+    (custom-comment :inherit font-lock-comment-face)
     (custom-comment-tag :foreground 7)
     (custom-documentation :foreground 4)
     (custom-group-tag :foreground 8 :weight bold)
@@ -218,6 +223,17 @@
     (linum :foreground 3 :background 0)
     (linum-relative-current-face :foreground 3 :background 0)
     (line-number-current-line :foreground 6)
+    
+    ;; icomplete
+    (icomplete-first-match :foreground 14 :weight bold)
+    (icomplete-section :foreground 7 :slant normal)
+    
+    ;; ido
+    (ido-indicator :foreground 12)
+    (ido-subdir :foreground 9)
+    (ido-virtual :foreground 15)
+    (ido-first-match :foreground 14 :weight bold)
+    (ido-only-match :foreground 14 :weight bold)
     
     ;; TODO customize:
     ;; org block and table backgrounds
@@ -275,7 +291,6 @@
     (org-verse :inherit org-block :slant italic)
     (org-verbatim :foreground 7)
 
-    
     (outline-1 :foreground 7 :weight bold)
     (outline-2 :foreground 8 :inherit outline-1)
     (outline-3 :foreground 9 :inherit outline-1)
@@ -284,7 +299,7 @@
     (outline-6 :foreground 9 :inherit outline-1)
     (outline-7 :foreground 7 :inherit outline-1)
     (outline-8 :foreground 8 :inherit outline-1)
-   
+    
     (package-description :foreground 4)
     (package-help-section-name :foreground 8 :weight bold)
     (package-name :foreground 8)
@@ -318,10 +333,6 @@
     (ansi-color-green :foreground 14 :background 14)
     (ansi-color-magenta :foreground 15 :background 15)
     
-    (tty-menu-disabled-face :foreground 1)
-    (tty-menu-enabled-face :background 2 :foreground 4)
-    (tty-menu-selected-face :foreground 8 :underline t)
-
     ;; TODO
     (undo-tree-visualizer-current-face :foreground 8)
     (undo-tree-visualizer-default-face :foreground 4)
@@ -350,6 +361,7 @@
     (whitespace-indentation :inherit trailing-whitespace)
     (whitespace-line :inherit trailing-whitespace)
     (whitespace-newline :inherit trailing-whitespace)
+    (whitespace-missing-newline-at-eof :inherit trailing-whitespace)
     (whitespace-space :inherit trailing-whitespace)
     (whitespace-space-after-tab :inherit trailing-whitespace)
     (whitespace-space-before-tab :inherit trailing-whitespace)
@@ -363,9 +375,36 @@
     ;; todo not in core?
     ;; imenu-list
     (imenu-list-entry-face-0 :foreground 7)
-    (imenu-list-entry-face-1 :foreground 9)
-    (imenu-list-entry-face-2 :foreground 10)
-    (imenu-list-entry-face-3 :foreground 8)
+    (imenu-list-entry-face-1 :foreground 8)
+    (imenu-list-entry-face-2 :foreground 9)
+    (imenu-list-entry-face-3 :foreground 10)
+
+    ;; orderless
+    (orderless-match-face-0 :foreground 14)
+    (orderless-match-face-1 :foreground 13)
+    (orderless-match-face-2 :foreground 12)
+    (orderless-match-face-3 :foreground 11)
+    (orderless-match-face-4 :foreground 15)
+
+    ;; anzu
+    (anzu-mode-line :foreground 8)
+    (anzu-mode-line-no-match :foreground 11)
+    (anzu-match-1 :inherit isearch-group-1)
+    (anzu-match-2 :inherit isearch-group-2)
+    (anzu-match-3 :background 15)
+
+
+    ;; Rainbow Delimeters
+    ;; trying to get some distance between the colours
+    (rainbow-delimiters-depth-1-face :foreground 4)
+    (rainbow-delimiters-depth-2-face :foreground 8)
+    (rainbow-delimiters-depth-3-face :foreground 14)
+    (rainbow-delimiters-depth-4-face :foreground 13)
+    (rainbow-delimiters-depth-5-face :foreground 12)
+    (rainbow-delimiters-depth-6-face :foreground 15)
+    (rainbow-delimiters-depth-7-face :foreground 7)
+    (rainbow-delimiters-depth-8-face :foreground 9)
+    (rainbow-delimiters-base-error-face :inherit show-paren-mismatch)
     )
   
   "The list of faces defined by the fnord theme.

@@ -21,12 +21,20 @@
 ;; This project implements the Nord theme for the Emacs editor;
 ;; it is a fork of a similar project called nordtheme/emacs.
 
+;;; TODO:
+
+;; - test on linux
+;; - document how to install in README.md
+;; - add screenshots to README.md
+;; - comment face should be a custom face (not a theme face)
+;; - MELPA 
+
 ;;; Code:
 
 (unless (>= emacs-major-version 24)
   (error "fnord-theme requires Emacs 24 or later"))
 
-(deftheme fnord "Nord, fixed: an arctic, north-bluish clean and elegant theme.")
+(deftheme fnord "Nord theme, fixed..")
 
 (require 'fnord-colours)
 (require 'fnord-functions)

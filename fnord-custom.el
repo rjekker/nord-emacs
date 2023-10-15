@@ -59,6 +59,37 @@ Substitute integers for fnord theme colours, add class and correct structure."
     `((,fnord--class . ,spec))))
 
 
+(defcustom fnord-comment-colour "#7b88a1"
+  "Foreground colour for comment face.
+The default setting for this colour is not in the original Nord palette.
+You can specify an int, which will be taken to be one of the fnord theme
+ colours, or a string with a custom colour code."
+  :type '(choice (string :tag "fnord default" :value  "#7b88a1")
+                 (integer :tag "nord default" :value 3)
+                 (integer :tag "choose a theme colour")
+                 (string :tag "custom colour string"))
+  :group 'fnord-theme
+  :set (lambda (symbol value)
+         (fnord--update-custom-face-colour symbol value 'font-lock-comment-face :foreground)))
+
+(defcustom fnord-region-face 'fnord-region-default
+  "Fnord face spec for highlighting the region.
+
+You can choose from predefined options, or specify a custom option.
+If you use a sexp, you can use integers 1-15 for colour values and
+they will be converted to fnord theme colours."
+  :type '(choice (face :tag "fnord default" :value fnord-region-default)
+                 (face :tag "fnord default secondary selection" :value fnord-secondary-selection-default)
+                 (face :tag "frost" :value fnord-region-frost)
+                 (face :tag "snowstorm" :value fnord-region-snowstorm)
+                 (face :tag "custom face"))
+  :group 'fnord-theme
+  :link '(url-link "https://www.nordtheme.com/docs/ports/emacs/configuration")
+  :set (lambda (symbol value)
+         (fnord--update-custom-face-attr symbol value 'region :inherit)))
+
+
+
 (defface fnord-region-default (fnord--defface-spec '(:foreground unspecified :background 2 :distant-foreground 4))
   "Default fnord face for region highlight.")
 (defface fnord-secondary-selection-default (fnord--defface-spec '(:foreground unspecified :background 3 :distant-foreground 4))
@@ -88,7 +119,7 @@ they will be converted to fnord theme colours."
 
 (defcustom fnord-secondary-selection-face 'fnord-secondary-selection-default
   "Fnord face spec for highlighting the secondary selection."
-  :type `(choice (face :tag "fnord default secondary selection" :value fnord-secondary-selection-default)
+  :type '(choice (face :tag "fnord default secondary selection" :value fnord-secondary-selection-default)
                  (face :tag "fnord default region" :value fnord-region-default)
                  (face :tag "frost" :value fnord-region-frost)
                  (face :tag "snowstorm" :value fnord-region-snowstorm)
@@ -110,7 +141,7 @@ they will be converted to fnord theme colours."
 
 By default, fnord-theme uses a brighter face here to make it easier to
 find a matching paren across a large piece of code."
-  :type `(choice (face :tag "fnord default" :value fnord-paren-match-brighter)
+  :type '(choice (face :tag "fnord default" :value fnord-paren-match-brighter)
                  (face :tag "nord" :value fnord-paren-match-nord)
                  (face :tag "custom face"))
   :group 'fnord-theme

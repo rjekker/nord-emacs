@@ -24,10 +24,11 @@
 
 (defun fnord--get-colour (n)
   "Retrieve nord colour N. Colour 16 is the special comment colour."
-  (cl-assert (and (>= n 0) (< n 17)))
+  (unless (and (>= n 0) (< n 16))
+    (error "Fnord theme colours must be in the range 0..15"))
   (when n
     (nth n
-         (list fnord-0 fnord-01 fnord-02 fnord-03 fnord-04 fnord-05 fnord-06 fnord-07 fnord-08 fnord-09 fnord-10 fnord-11 fnord-12 fnord-13 fnord-14 fnord-15 fnord-comment-colour))))
+         (list fnord-0 fnord-01 fnord-02 fnord-03 fnord-04 fnord-05 fnord-06 fnord-07 fnord-08 fnord-09 fnord-10 fnord-11 fnord-12 fnord-13 fnord-14 fnord-15))))
 
 
 (defun fnord--subst-colours (face-spec)
@@ -96,8 +97,9 @@ If VALUE is nil, it will be set to `unspecified'."
                            (pcase value
                              ((pred integerp) (fnord--get-colour value))
                              ((pred stringp)
-                              (unless (string-prefix-p "#" value)
-                                (error (format "%s is not a valid color code (should start with #)" value)))))))
+                              (if (not (string-prefix-p "#" value))
+                                  (error (format "%s is not a valid color code (should start with #)" value))
+                                value)))))
 
 (provide 'fnord-functions)
 

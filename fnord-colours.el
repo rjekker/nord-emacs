@@ -28,12 +28,6 @@ These settings are NOT applied immediately - you will need to reload the theme."
   :group 'fnord-theme
   :link '(url-link "https://www.nordtheme.com/docs/colors-and-palettes"))
 
-(defcustom fnord-comment-colour "#7b88a1"
-  "Fnord theme colour 16 - A special colour for comments.
-This colour is not in the original Nord palette."
-  :type 'string
-  :group 'fnord-theme-colours)
-
 (defcustom fnord-0 "#2E3440"
   "Fnord theme colour 0 - Polar Night (dark()). For background and area coloring."
   :type 'string
