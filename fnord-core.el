@@ -34,7 +34,7 @@
     (bold-italic :weight bold :slant italic)
     (bookmark-face :foreground 12 :distant-foreground 12)
     (cursor :background 4)
-    (default :foreground 4 :background 0)
+    (default :foreground 6 :background 0)
     (error :foreground 11 :weight bold)
     
     (escape-glyph :foreground 12)
@@ -78,7 +78,7 @@
     (query-replace :inherit match)
 
     (show-paren-match :inherit ,fnord-paren-match-face)
-    (show-paren-mismatch :foreground 4 :background 11)
+    (show-paren-mismatch :foreground 6 :background 11)
     
     ;; hi-lock mode
     (hi-aquamarine :background 7 :distant-foreground 0)
@@ -114,7 +114,7 @@
     (tty-menu-selected-face :foreground 8 :underline t)
 
     (calendar-month-header :foreground 7)
-    (calendar-weekday-header :foreground 8)
+    (calendar-weekday-header :foreground 6)
     (calendar-weekend-header :foreground 15)
     (calendar-today :foreground 14 :weight bold)
     (diary :foreground 7)
@@ -159,7 +159,7 @@
     (font-lock-regexp-grouping-construct :foreground 13)
     (font-lock-string-face :foreground 14)
     (font-lock-type-face :foreground 7)
-    (font-lock-variable-name-face :foreground 4)
+    (font-lock-variable-name-face :foreground 6)
     (font-lock-warning-face :foreground 13)
     
     (buffer-menu-buffer :foreground 7 :weight bold)
@@ -211,7 +211,7 @@
     (shortdoc-heading :inherit info-menu-header)
     
     ;; info-mode
-    (info-title-4 :foreground 7 :weight bold :inherit variable-pitch)
+    (info-title-4 :foreground 6 :weight bold :inherit variable-pitch)
     (info-title-1 :height 1.2 :inherit info-title-2)
     (info-title-2 :height 1.2 :inherit info-title-3)
     (info-title-3 :height 1.2 :inherit info-title-4)
@@ -419,6 +419,10 @@
     (rainbow-delimiters-depth-7-face :foreground 7)
     (rainbow-delimiters-depth-8-face :foreground 9)
     (rainbow-delimiters-base-error-face :inherit show-paren-mismatch)
+    ;; smart-paren mode
+    (sp-wrap-overlay-face :foreground 11)
+    (sp-wrap-overlay-opening-pair :foreground 14)
+    (sp-wrap-overlay-closing-pair :foreground 1)
     
     (company-tooltip :background 2 :foreground 4)
     (company-tooltip-selection :inherit highlight)
@@ -436,6 +440,9 @@
     (which-key-special-key-face :foreground 15)
     (which-key-note-face :foreground 10)
     (which-key-local-map-description-face :foreground 12)
+    ;; shell-script-mode
+    (sh-heredoc :foreground 12 :weight normal)
+    (sh-quoted-exec :foreground 12)
     )
   
   "The list of faces defined by the fnord theme.
