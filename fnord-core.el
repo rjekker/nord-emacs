@@ -443,7 +443,8 @@
     ;; shell-script-mode
     (sh-heredoc :foreground 12 :weight normal)
     (sh-quoted-exec :foreground 12)
-    )
+    
+    (yaml-tab-face :foreground 11 :background 11))
   
   "The list of faces defined by the fnord theme.
 Foreground and background colours can be ints, in which
