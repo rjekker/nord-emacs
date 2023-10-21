@@ -117,6 +117,38 @@ they will be converted to fnord theme colours."
          (fnord--update-custom-face-attr symbol value 'region :inherit)))
 
 
+(defun fnord--hl-line-off ()
+  (when (or global-hl-line-mode hl-line-mode)
+    (setq-local fnord--hl-line-toggle-cookie
+         (face-remap-add-relative 'hl-line '(:foreground 'unspecified 'background 'unspecified)))))
+
+
+(defun fnord--hl-line-on ()
+  (when fnord--hl-line-toggle-cookie
+    (face-remap-remove-relative fnord--hl-line-toggle-cookie)))
+
+
+(defun fnord--activate-hl-line-toggle (symbol value)
+  (if (and value (featurep 'hl-line))
+      (progn
+        (add-hook 'activate-mark-hook #'fnord--hl-line-off)
+        (add-hook 'deactivate-mark-hook #'fnord--hl-line-on))
+    (remove-hook 'activate-mark-hook #'fnord--hl-line-off)
+    (remove-hook 'deactivate-mark-hook #'fnord--hl-line-on))
+  (set-default-toplevel-value symbol value))
+
+
+(defcustom fnord-no-hl-line-when-region-active t
+  "hl-line-mode will be temporarily turned off when region is active.
+
+This is only necessary when using `hl-line-mode' and `transient-mark-mode'.
+The default region face has low contrast with the face for hl-line.
+When this is t, we make the hl-line invisible while a mark is active."
+  :type 'boolean
+  :group 'fnord-theme
+  :set #'fnord--activate-hl-line-toggle)
+
+
 (defcustom fnord-secondary-selection-face 'fnord-secondary-selection-default
   "Fnord face spec for highlighting the secondary selection."
   :type '(choice (face :tag "fnord default secondary selection" :value fnord-secondary-selection-default)
@@ -132,7 +164,7 @@ they will be converted to fnord theme colours."
 
 (defface fnord-paren-match-nord (fnord--defface-spec '(:background 3 :foreground 8))
   "Paren match face from the original Nord theme.")
-(defface fnord-paren-match-brighter (fnord--defface-spec '(:background 10 :foreground 4))
+(defface fnord-paren-match-brighter (fnord--defface-spec '(:background 10 :foreground 6))
   "Brighter default for paren match face.")
 
 
