@@ -1,0 +1,58 @@
+#+TITLE: Emacs Fnord theme
+
+This is an implementation of the [[https://www.nordtheme.com][Nord colour palette]] for the Emacs
+editor: "An arctic, north-bluish clean and elegant theme".
+
+This project is a fork of [[https://github.com/nordtheme/emacs][Nordtheme/emacs]]. I take no credit for
+creating the colour scheme; this project merely fixes some of the
+problems of the original project and aims to be more
+flexible/customizable.
+
+** Installation
+Currently, you can install straight from github:
+
+#+begin_src elisp
+  (package-vc-install "https://github.com/rjekker/fnord-theme")
+#+end_src
+
+Installing from Melpa will be added soon.
+
+** Activation
+
+#+begin_src elisp
+  (require 'fnord-theme) ;; this will make sure to add the theme to the custom-theme-load-path
+  (load-theme 'fnord)
+#+end_src
+
+** Improvements
+
+Differences between this project and [[https://github.com/nordtheme/emacs][Nordtheme/emacs]]:
+
+- Dropped support for terminals with a smaller colorspace
+- Cleaner code, easier to customize or fix
+- Fix [loading the theme in daemon mode](https://github.com/nordtheme/emacs/issues/59)
+- Fix [tab-bar support](https://github.com/nordtheme/emacs/issues/105)
+- Fix [trailing whitespace background](https://github.com/nordtheme/emacs/issues/79)
+- Fix [Line number current line](https://github.com/nordtheme/emacs/issues/78)
+- Comment colour is customizable
+- Better colours for org headlines, see: https://github.com/nordtheme/emacs/issues/95, https://github.com/nordtheme/emacs/issues/98
+- More complete support for several packages including magit
+
+** Screenshots
+Here's a preview of what this looks like:
+
+*** Programming
+Bash code:
+
+[[./bash.png]]
+
+Emacs-lisp using rainbow-delimiters-mode
+
+[[./lisp.png]]
+
+*** Org mode
+[[./org-mode.png]]
+
+*** Git with magit
+[[./magit.png]]
+
