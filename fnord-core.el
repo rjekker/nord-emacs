@@ -433,8 +433,8 @@
     (company-tooltip-scrollbar-thumb :background 3)
     (company-tooltip-scrollbar-track :background 1)
 
-    (which-key-key-face :foreground 7)
-    (which-key-command-description-face :foreground 9)
+    (which-key-key-face :foreground 4)
+    (which-key-command-description-face :foreground 7)
     (which-key-highlighted-command-face :foreground 6)
     (which-key-group-description-face :foreground 14)
     (which-key-special-key-face :foreground 15)
@@ -445,6 +445,30 @@
     (sh-quoted-exec :foreground 12)
     
     (yaml-tab-face :foreground 11 :background 11))
+    (yaml-tab-face :foreground 11 :background 11)
+
+    ;; ace-window
+    (aw-leading-char-face :foreground 6 :background 11 :weight bold)
+    (aw-background-face :inherit font-lock-comment-face)
+    (aw-key-face :foreground 14)
+
+    (transient-disabled-suffix :background 11 :foreground 6)
+    (transient-enabled-suffix :background 14 :foreground 0)
+    (transient-heading :foreground 7)
+    (transient-inactive-argument :foreground 10)
+    (transient-inactive-value :foreground 10)
+    (transient-key :foreground 7)
+    (transient-argument :foreground 14)
+
+    (transient-amaranth :foreground 13)
+    (transient-blue :foreground 9)
+    (transient-pink :foreground 12)
+    (transient-purple :foreground 15)
+    (transient-red :foreground 11)
+    (transient-teal :foreground 8)
+
+    ;;; TODO hyra
+    )
   
   "The list of faces defined by the fnord theme.
 Foreground and background colours can be ints, in which
