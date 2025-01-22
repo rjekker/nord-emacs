@@ -1203,7 +1203,11 @@ find a matching paren across a large piece of code."
     (neo-vc-needs-update-face :background 10 :foreground 4)
     (neo-vc-removed-face :foreground 11 :strike-through nil)
     (neo-vc-up-to-date-face :foreground 4)
-    (neo-vc-user-face :foreground 4))
+    (neo-vc-user-face :foreground 4)
+
+    (corfu-default :background 1)
+    (corfu-border  :background 7)
+    (corfu-current :foreground unspecified :background 2 :distant-foreground 4))
     "The list of faces defined by the fnord theme.
 Foreground and background colours can be ints, in which
 case they will be converted to fnord theme colours.")
